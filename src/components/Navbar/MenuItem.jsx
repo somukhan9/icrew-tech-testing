@@ -2,6 +2,7 @@
 
 import classnames from 'classnames'
 import { useState } from 'react'
+import 'boxicons'
 
 import Navlinks from './MenuItemLinks.jsx'
 

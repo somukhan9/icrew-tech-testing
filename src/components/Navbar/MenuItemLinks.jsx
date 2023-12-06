@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import classnames from 'classnames'
 import MenuItemSublinks from './MenuItemSublinks'
+import 'boxicons'
 
 export default function Navlinks({ item, mainURLHeading, setMainURLHeading }) {
   const pathname = usePathname()
