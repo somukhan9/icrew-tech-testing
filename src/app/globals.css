@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .Navbar__nav-items-container {
+    @apply flex flex-col items-start justify-start space-y-3 bg-slate-200 px-8 py-4 xs:flex-row xs:items-center xs:justify-between xs:space-y-0;
+  }
+
+  .Navbar__nav-search-bar-container {
+    @apply hidden w-full max-w-sm overflow-hidden rounded-md border border-blue-300 text-slate-900 md:flex lg:max-w-[540px];
+  }
+
+  .Navbar__auth-links-link {
+    @apply text-2xl text-slate-600 transition-colors ease-in-out hover:text-slate-800;
+  }
+
+  .AuthDropDownMenu__auth-drop-down {
+    @apply absolute right-[50%] mt-1 flex translate-x-[50%] flex-row-reverse items-start justify-between rounded-md bg-slate-600
+        text-slate-100 shadow-lg before:absolute before:left-[50%] before:top-[-5px] before:h-4 before:w-4 before:translate-x-[-50%] before:rotate-45 before:bg-slate-600;
+  }
+
+  .Banner__container {
+    @apply relative h-[200px] w-full overflow-hidden rounded-md md:h-[400px];
+  }
+
+  .Banner__left-overlay {
+    @apply absolute h-full w-full bg-gradient-to-r from-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0.9)];
+  }
+
+  .Banner__right-container {
+    @apply absolute right-0 flex h-full w-full max-w-xs flex-col items-start justify-center p-2 text-white xs:gap-1 md:right-10 md:gap-2;
+  }
+
+  .Banner__right-shop-now-btn {
+    @apply mt-2 flex items-center rounded-full bg-blue-700 px-4 py-1 text-sm font-semibold capitalize transition-all ease-in-out hover:bg-blue-600 md:px-8 md:py-2 md:text-lg;
+  }
+}
