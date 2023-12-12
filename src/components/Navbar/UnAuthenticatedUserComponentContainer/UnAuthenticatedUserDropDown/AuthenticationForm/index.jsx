@@ -240,12 +240,14 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
 
           {/* Zone */}
           <div className={styles.formGroup}>
-            <label htmlFor="zoneId">Zone</label>
+            <label htmlFor="zoneId" className="flex-grow">
+              Zone
+            </label>
             {isClient ? (
               <select
                 id="zoneId"
                 {...register('zoneId')}
-                className={`${styles.formControl} capitalize sm:w-[235px]`}
+                className={`${styles.formControl} capitalize`}
               >
                 {zones.map((zone, index) => (
                   <option key={index} value={zone.id}>
