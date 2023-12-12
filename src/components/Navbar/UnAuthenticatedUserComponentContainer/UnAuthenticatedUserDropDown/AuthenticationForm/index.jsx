@@ -18,6 +18,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
   const [usernameOrEmail, setUsernameOrEmail] = useState('')
   const [password, setPassword] = useState('')
   const zones = useZoneStore((state) => state.zones)
+  const collectZones = useZoneStore((state) => state.collectZones)
   // const signIn = useAuthStore((state) => state.signIn)
   const { signIn } = useAuthService()
 
