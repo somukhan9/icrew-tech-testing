@@ -39,18 +39,18 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    ;(async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/zones`,
-        )
-        const { data } = await response.json()
-        // console.log(data)
-        collectZones(data)
-      } catch (error) {
-        console.error(error)
-      }
-    })()
+    // ;(async () => {
+    //   try {
+    //     const response = await fetch(
+    //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/zones`,
+    //     )
+    //     const { data } = await response.json()
+    //     // console.log(data)
+    //     collectZones(data)
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // })()
     setIsClient(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

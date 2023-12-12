@@ -13,7 +13,7 @@ import { useAuthService } from '@/services/Auth/authService'
 import Spinner from '@/components/Spinner'
 
 export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
-  const [isClient, setIClient] = useState(false)
+  const [isClient, setIsClient] = useState(false)
   const [isOtpGenerating, setIsOtpGenerating] = useState(false)
   const [usernameOrEmail, setUsernameOrEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -111,7 +111,20 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
   }
 
   useEffect(() => {
-    setIClient(true)
+    ;(async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/zones`,
+        )
+        const { data } = await response.json()
+        // console.log(data)
+        collectZones(data)
+      } catch (error) {
+        console.error(error)
+      }
+    })()
+    setIsClient(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
