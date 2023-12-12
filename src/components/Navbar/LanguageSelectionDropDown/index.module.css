@@ -1,0 +1,14 @@
+.languageSelectionDropDownContainer {
+  @apply absolute right-[40%] z-50 mt-2 flex translate-x-[40%] flex-row-reverse items-start justify-between rounded-md bg-slate-600
+    text-slate-300 shadow-lg transition-all duration-200 ease-in-out;
+
+  @apply before:absolute before:left-[50%] before:top-[-5px] before:h-4 before:w-4 before:translate-x-[-50%] before:rotate-45 before:bg-slate-600;
+}
+
+.languageSelectionDropDownCloseBtn {
+  @apply relative text-slate-200 transition-colors ease-in-out hover:text-slate-100;
+}
+
+.languageSelectBtn {
+  @apply inline-block transition-colors hover:text-slate-100;
+}

@@ -1,0 +1,23 @@
+.authenticationForm {
+  @apply my-2 flex w-[200px] flex-col gap-2 sm:w-[400px];
+}
+
+.formGroup {
+  @apply flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.formControl {
+  @apply rounded-md border border-slate-800 p-2 text-slate-800 outline-none focus:border-none focus:ring-2 focus:ring-inset focus:ring-indigo-600;
+}
+
+.generateOTPSectionContainer {
+  @apply flex flex-col gap-2 sm:items-end sm:justify-between;
+}
+
+.generateOTPBtn {
+  @apply max-w-max rounded-md bg-blue-800 px-5 py-2 text-slate-100 transition-colors hover:bg-blue-600 disabled:bg-slate-300;
+}
+
+.submitBtn {
+  @apply mt-2 flex-1 rounded-md bg-blue-800 px-5 py-2 text-slate-100 transition-colors hover:bg-blue-600 disabled:bg-slate-300 sm:mt-4;
+}

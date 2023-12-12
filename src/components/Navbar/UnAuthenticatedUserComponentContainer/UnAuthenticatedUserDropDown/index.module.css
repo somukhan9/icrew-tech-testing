@@ -1,0 +1,14 @@
+.unAuthenticatedUserDropDownContainer {
+  /* Toggling drop down */
+  @apply left-0 top-0 flex min-h-screen w-screen flex-col items-center justify-center;
+
+  /* sm screen */
+  @apply absolute z-[100] rounded-md bg-slate-100 p-4 text-slate-900 transition-all ease-in-out sm:left-auto sm:right-0 sm:top-10 sm:min-h-max sm:w-auto;
+
+  /* before selector */
+  @apply sm:before:absolute sm:before:-top-2 sm:before:right-12 sm:before:h-4 sm:before:w-4 sm:before:rotate-45 sm:before:bg-slate-100;
+}
+
+.closeUnAuthenticatedUserDropDownBtn {
+  @apply absolute right-0 top-0 z-50 p-4 pt-0 text-2xl font-bold text-slate-500 transition-colors ease-in-out hover:text-slate-900;
+}

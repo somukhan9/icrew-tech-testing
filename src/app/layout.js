@@ -1,9 +1,13 @@
 import { Inter } from 'next/font/google'
-import Navbar from '@/components/Navbar/Navbar'
+
+import { ToastContainer } from 'react-toastify'
+
+import Navbar from '@/components/Navbar'
+import MenuItem from '@/components/MenuBar'
 
 import './globals.css'
 import 'boxicons/css/boxicons.min.css'
-import MenuItem from '@/components/Navbar/MenuItem'
+import 'react-toastify/dist/ReactToastify.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,6 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ToastContainer />
         <Navbar />
         <MenuItem />
         <main>{children}</main>

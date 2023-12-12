@@ -1,0 +1,13 @@
+.navbarContainer {
+  @apply flex flex-col items-start justify-start bg-slate-200 px-8 py-4 xsm:flex-row xsm:items-center xsm:justify-between xsm:space-y-0;
+}
+
+.link {
+  @apply text-2xl text-slate-600 transition-colors ease-in-out hover:text-slate-800;
+}
+
+.responsiveSearchBarOpenBtn {
+  @apply flex flex-col items-center justify-center text-xl text-slate-600 transition-colors ease-in-out hover:text-slate-800 md:hidden;
+}
+
+
