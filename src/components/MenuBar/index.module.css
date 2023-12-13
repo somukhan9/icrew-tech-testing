@@ -3,7 +3,7 @@
 }
 
 .menuBarHamburgerBtn {
-  @apply absolute right-0 top-20 p-2 text-2xl transition-all duration-300 ease-in-out md:hidden;
+  @apply absolute right-0 top-28 p-2 text-2xl transition-all duration-300 ease-in-out xsm:top-20 md:hidden;
 }
 
 .menuBarContentContainer {

@@ -15,6 +15,8 @@ import { useAuthStore } from '@/store/auth'
 import Spinner from '../Spinner'
 
 export default function Navbar() {
+  const languageSelectionDropDownOpenIRef = useRef()
+  const languageSelectionDropDownOpenPRef = useRef()
   const languageSelectionDropDownOpenBtnRef = useRef()
   const [isClient, setIsClient] = useState(false)
   const [isOpenSearchBar, setIsOpenSearchBar] = useState(false)
@@ -39,18 +41,6 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    // ;(async () => {
-    //   try {
-    //     const response = await fetch(
-    //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/zones`,
-    //     )
-    //     const { data } = await response.json()
-    //     // console.log(data)
-    //     collectZones(data)
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // })()
     setIsClient(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -116,20 +106,30 @@ export default function Navbar() {
           {/* Language Select Button */}
           <div className="relative">
             <button
+              ref={languageSelectionDropDownOpenBtnRef}
               onClick={toggleLanguageSelectionDropDown}
               className={`${styles.link} flex items-center justify-center`}
             >
               <p
-                ref={languageSelectionDropDownOpenBtnRef}
+                ref={languageSelectionDropDownOpenPRef}
                 className="inline-block h-full w-full text-sm"
               >
                 Eng
               </p>
-              <i className="bx bx-chevron-down inline-block"></i>
+              <i
+                ref={languageSelectionDropDownOpenIRef}
+                className="bx bx-chevron-down inline-block"
+              ></i>
             </button>
 
             {/* Language Selection Options Dropdown */}
             <LanguageSelectionDropDown
+              languageSelectionDropDownOpenPRef={
+                languageSelectionDropDownOpenPRef
+              }
+              languageSelectionDropDownOpenIRef={
+                languageSelectionDropDownOpenIRef
+              }
               languageSelectionDropDownOpenBtnRef={
                 languageSelectionDropDownOpenBtnRef
               }

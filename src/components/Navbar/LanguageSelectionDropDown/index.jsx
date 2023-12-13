@@ -7,6 +7,8 @@ import styles from './index.module.css'
 export default function LanguageSelectionDropDown({
   isOpenLanguageDropDown,
   languageSelectionDropDownOpenBtnRef,
+  languageSelectionDropDownOpenPRef,
+  languageSelectionDropDownOpenIRef,
   closeLanguageSelectionDropDown,
 }) {
   const languageSelectionDropDownElementRef = useRef()
@@ -14,8 +16,10 @@ export default function LanguageSelectionDropDown({
   useEffect(() => {
     window.addEventListener('click', function (e) {
       if (
-        e.target !== languageSelectionDropDownOpenBtnRef.current &&
-        e.target !== languageSelectionDropDownElementRef.current
+        e.target !== languageSelectionDropDownOpenPRef.current &&
+        e.target !== languageSelectionDropDownElementRef.current &&
+        e.target !== languageSelectionDropDownOpenIRef.current &&
+        e.target !== languageSelectionDropDownOpenBtnRef.current
       ) {
         closeLanguageSelectionDropDown()
       }
