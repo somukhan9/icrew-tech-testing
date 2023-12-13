@@ -8,7 +8,9 @@ import { categories } from './categories'
 import styles from './index.module.css'
 
 export default function Shop() {
-  const shopDropDownIRef = useRef()
+  const shopDropDownIDesktopRef = useRef()
+  const shopDropDownIMobileMinusRef = useRef()
+  const shopDropDownIMobilePlusRef = useRef()
   const shopDropDownBtnRef = useRef()
   const shopDropDownLiRef = useRef()
   const shopDropDownContainerRef = useRef()
@@ -27,7 +29,9 @@ export default function Shop() {
       if (
         e.target !== shopDropDownBtnRef.current &&
         e.target !== shopDropDownContainerRef.current &&
-        e.target !== shopDropDownIRef.current &&
+        e.target !== shopDropDownIDesktopRef.current &&
+        e.target !== shopDropDownIMobileMinusRef.current &&
+        e.target !== shopDropDownIMobilePlusRef.current &&
         e.target !== shopDropDownLiRef.current
       ) {
         closeDropDown()
@@ -46,7 +50,10 @@ export default function Shop() {
           Shop
         </button>
         <div className="hidden text-2xl md:inline-block">
-          <i ref={shopDropDownIRef} className="bx bx-chevron-down mt-1"></i>
+          <i
+            ref={shopDropDownIDesktopRef}
+            className="bx bx-chevron-down mt-1"
+          ></i>
         </div>
         <div
           className={`inline-block text-lg transition-all duration-300 md:hidden ${classnames(
@@ -57,9 +64,12 @@ export default function Shop() {
           )}`}
         >
           {isOpenShopDropDown ? (
-            <i ref={shopDropDownIRef} className="bx bx-minus mt-1"></i>
+            <i
+              ref={shopDropDownIMobileMinusRef}
+              className="bx bx-minus mt-1"
+            ></i>
           ) : (
-            <i ref={shopDropDownIRef} className="bx bx-plus mt-2"></i>
+            <i ref={shopDropDownIMobilePlusRef} className="bx bx-plus mt-2"></i>
           )}
         </div>
       </li>
