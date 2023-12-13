@@ -57,9 +57,9 @@ export default function Shop() {
           )}`}
         >
           {isOpenShopDropDown ? (
-            <i className="bx bx-minus mt-1"></i>
+            <i ref={shopDropDownIRef} className="bx bx-minus mt-1"></i>
           ) : (
-            <i className="bx bx-plus mt-2"></i>
+            <i ref={shopDropDownIRef} className="bx bx-plus mt-2"></i>
           )}
         </div>
       </li>
