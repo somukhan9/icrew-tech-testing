@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import classnames from 'classnames'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import styles from './index.module.css'
 import Shop from './Shop'
@@ -26,6 +26,14 @@ export default function MenuItem() {
     } else {
       openHamburgerMenu()
     }
+  }
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('scroll', function (e) {
+      if (this.scrollY >= 100) {
+        closeHamburgerMenu()
+      }
+    })
   }
 
   return (

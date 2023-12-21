@@ -1,0 +1,7 @@
+.productImagesContainer {
+  @apply flex flex-col items-center gap-4 lg:flex-row;
+}
+
+.productImageChangerBtn {
+  @apply text-2xl text-slate-400 transition-colors duration-200 ease-in-out hover:text-slate-600;
+}

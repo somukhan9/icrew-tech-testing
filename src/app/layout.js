@@ -7,6 +7,7 @@ import MenuItem from '@/components/MenuBar'
 
 import './globals.css'
 import 'boxicons/css/boxicons.min.css'
+import Footer from '@/components/Footer'
 import 'react-toastify/dist/ReactToastify.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <MenuItem />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )

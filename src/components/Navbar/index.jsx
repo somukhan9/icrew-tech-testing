@@ -85,13 +85,14 @@ export default function Navbar() {
             <i className="bx bx-search-alt-2"></i>
           </button>
 
+          <Link href="/cart" className={styles.link}>
+            <i className="bx bxs-cart"></i>
+          </Link>
+
           {/* AUTH COMPONENT */}
           {isClient ? (
             isLoggedIn ? (
               <>
-                <Link href="/cart" className={styles.link}>
-                  <i className="bx bxs-cart"></i>
-                </Link>
                 <AuthenticatedUserElementContainer />
               </>
             ) : (

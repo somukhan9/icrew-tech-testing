@@ -1,0 +1,7 @@
+.pdpContainer {
+  @apply mx-auto max-w-5xl px-4 py-12;
+}
+
+.productDetailsContainer {
+  @apply mx-auto flex w-4/5 flex-col items-start gap-6 lg:w-full lg:flex-row lg:items-center;
+}
