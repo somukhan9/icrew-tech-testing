@@ -1,0 +1,7 @@
+.productTabDescriptionContainer {
+  @apply flex flex-col gap-14 lg:flex-row lg:items-center;
+}
+
+.productTabDescriptionText {
+  @apply text-justify text-sm text-[#808080];
+}

@@ -33,7 +33,8 @@ export default function ProductImageContainer({ productImages }) {
           className={styles.productImageChangerBtn}
           onClick={decreaseCurrentImagePosition}
         >
-          <i className="bx bx-chevron-up"></i>
+          <i className="bx bx-chevron-up hidden lg:inline-block"></i>
+          <i className="bx bx-chevron-left lg:hidden"></i>
         </button>
         {productImages.map((item, index) => (
           <div
@@ -57,7 +58,8 @@ export default function ProductImageContainer({ productImages }) {
           className={styles.productImageChangerBtn}
           onClick={increaseCurrentImagePosition}
         >
-          <i className="bx bx-chevron-down"></i>
+          <i className="bx bx-chevron-down hidden lg:inline-block"></i>
+          <i className="bx bx-chevron-right lg:hidden"></i>
         </button>
       </div>
       <div className="relative h-[200px] w-[200px] xsm:h-[300px] xsm:w-[300px]">

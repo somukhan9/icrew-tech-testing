@@ -2,8 +2,9 @@ import { Poppins } from 'next/font/google'
 
 import styles from './page.module.css'
 
-import ProductImageContainer from '@/components/ProductImageContainer'
-import ProductDescriptionContainer from '@/components/ProductDescriptionContainer'
+import ProductImageContainer from '@/components/PDP/ProductImageContainer'
+import ProductDescriptionContainer from '@/components/PDP/ProductDescriptionContainer'
+import ProductTab from '@/components/PDP/ProductTab'
 
 const productImages = [
   {
@@ -46,7 +47,12 @@ export default function PDP() {
         {/* Product Description Container */}
         <ProductDescriptionContainer productTags={productTags} />
       </div>
-      <div className={styles.productContentContainer}></div>
+
+      {/* Product Content */}
+      <div className={styles.productContentContainer}>
+        {/* Product Tab */}
+        <ProductTab />
+      </div>
       <div className={styles.relatedProductsContainer}></div>
     </section>
   )
