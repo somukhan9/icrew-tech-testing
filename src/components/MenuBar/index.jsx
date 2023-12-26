@@ -57,7 +57,7 @@ export default function MenuItem() {
       <div
         className={`${styles.menuBarContentContainer} ${classnames({
           'left-0': isHamburgerMenuOpen,
-          'left-[-100%]': !isHamburgerMenuOpen,
+          'left-[-180%]': !isHamburgerMenuOpen,
         })}`}
       >
         <div className={styles.menuBarLinksContainer}>
