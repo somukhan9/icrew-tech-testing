@@ -46,7 +46,7 @@ export default function RelatedProducts() {
       <h2 className="text-center text-2xl font-semibold text-[#1A1A1A]">
         Related Products
       </h2>
-      <div className="mt-8 flex flex-wrap items-center gap-2">
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
         {relatedProducts.map((product, index) => (
           <div
             key={index}
