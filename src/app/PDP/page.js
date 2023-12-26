@@ -5,6 +5,7 @@ import styles from './page.module.css'
 import ProductImageContainer from '@/components/PDP/ProductImageContainer'
 import ProductDescriptionContainer from '@/components/PDP/ProductDescriptionContainer'
 import ProductTab from '@/components/PDP/ProductTab'
+import RelatedProducts from '@/components/PDP/RelatedProducts'
 
 const productImages = [
   {
@@ -53,7 +54,9 @@ export default function PDP() {
         {/* Product Tab */}
         <ProductTab />
       </div>
-      <div className={styles.relatedProductsContainer}></div>
+      <div className={styles.relatedProductsContainer}>
+        <RelatedProducts />
+      </div>
     </section>
   )
 }

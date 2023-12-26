@@ -50,7 +50,7 @@ export default function CustomerReview() {
                   {item.name}
                 </h4>
                 <div className="flex items-center">
-                  <i className="bx bxs-star half-star text-[#FF8A00]"></i>
+                  <i className="bx bxs-star text-[#FF8A00]"></i>
                   <i className="bx bxs-star text-[#FF8A00]"></i>
                   <i className="bx bxs-star text-[#FF8A00]"></i>
                   <i className="bx bxs-star text-[#FF8A00]"></i>
