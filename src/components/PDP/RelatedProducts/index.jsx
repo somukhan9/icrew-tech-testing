@@ -8,7 +8,7 @@ import { currencyFormatter } from '@/utils/currencyFormat'
 const relatedProducts = [
   {
     id: 1,
-    img: '/assets/images/pdp/p1.png',
+    img: '/assets/images/PDP/p1.png',
     name: 'Green Apple',
     price: 20.99,
     priceWithDiscount: 14.99,
@@ -16,7 +16,7 @@ const relatedProducts = [
   },
   {
     id: 2,
-    img: '/assets/images/pdp/p2.png',
+    img: '/assets/images/PDP/p2.png',
     name: 'Chanise Cabbage',
     price: 14.99,
     // priceWithDiscount: 14.99,
@@ -24,7 +24,7 @@ const relatedProducts = [
   },
   {
     id: 3,
-    img: '/assets/images/pdp/p3.png',
+    img: '/assets/images/PDP/p3.png',
     name: 'Green Capsicum',
     price: 14.99,
     // priceWithDiscount: 14.99,
@@ -32,7 +32,7 @@ const relatedProducts = [
   },
   {
     id: 4,
-    img: '/assets/images/pdp/p4.png',
+    img: '/assets/images/PDP/p4.png',
     name: 'Ladies Finger',
     price: 14.99,
     // priceWithDiscount: 14.99,
