@@ -1,15 +1,11 @@
 .searchBarContainer {
-  @apply hidden w-full overflow-hidden rounded-md border border-blue-600 text-slate-900 md:flex md:max-w-xs lg:max-w-[540px];
+  @apply flex w-full items-center overflow-hidden rounded-md border border-blue-600 text-slate-900 md:w-[20rem] lg:w-[540px];
 }
 
 .searchBarTextInput {
-  @apply flex-1 bg-transparent px-2 outline-none;
+  @apply h-full w-full flex-1 bg-transparent px-2 outline-none placeholder:text-slate-600 md:placeholder:text-slate-400;
 }
 
 .searchBtn {
   @apply bg-blue-700 px-3 py-2 text-white transition-all ease-in-out hover:bg-blue-600;
-}
-
-.mobileResponsiveSearchBarContainer {
-  @apply absolute left-0 right-0 z-50 flex items-center gap-4 bg-slate-400 p-2 transition-all duration-200 ease-in-out xsm:p-4 md:hidden;
 }

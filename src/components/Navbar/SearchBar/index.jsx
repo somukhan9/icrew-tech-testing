@@ -1,53 +1,85 @@
+import { useEffect, useRef, useState } from 'react'
+
 import classnames from 'classnames'
 
+import { useRecentSearchService } from '@/services/RecentSearch/recentSearch'
+
 import styles from './index.module.css'
+import RecentSearch from './RecentSearch'
 
 export default function SearchBar({ isOpenSearchBar, closeSearchBar }) {
+  const { addToRecentSearch } = useRecentSearchService()
+  const searchInputRef = useRef()
+  const recentSearchRef = useRef()
+  const [searchQuery, setSearchQuery] = useState('')
+  const [isOpenRecentSearch, setIsOpenRecentSearch] = useState(false)
+
   const handleSearch = async () => {
-    console.log('searched')
+    if (!searchQuery) {
+      return
+    }
+    addToRecentSearch(searchQuery)
+    setSearchQuery('')
   }
 
-  return (
-    <>
-      {/* Desktop Search Bar */}
-      <div className={styles.searchBarContainer}>
-        <input
-          type="text"
-          placeholder="Search"
-          className={styles.searchBarTextInput}
-        />
-        <button className={styles.searchBtn}>Search</button>
-      </div>
+  useEffect(() => {
+    const handleShowRecentSearch = (event) => {
+      if (
+        searchInputRef.current &&
+        !searchInputRef.current.contains(event.target) &&
+        recentSearchRef.current &&
+        !recentSearchRef.current.contains(event.target)
+      ) {
+        setIsOpenRecentSearch(false)
+      }
+    }
 
-      {/* Mobile Search Bar Container */}
-      <div
-        className={`${styles.mobileResponsiveSearchBarContainer} ${classnames({
+    document.addEventListener('click', handleShowRecentSearch)
+
+    return () => {
+      document.removeEventListener('click', handleShowRecentSearch)
+    }
+  }, [])
+
+  return (
+    <div
+      className={`absolute left-0 right-0 z-50 bg-slate-400 p-4 transition-all duration-200 ease-in-out md:static md:bg-transparent md:p-0 ${classnames(
+        {
           'top-0': isOpenSearchBar,
           'top-[-100%]': !isOpenSearchBar,
-        })}`}
-      >
+        },
+      )}`}
+    >
+      <div className="relative flex items-center gap-2 md:gap-2">
         <button
-          className="p-2 text-2xl text-slate-700 hover:text-slate-900"
+          className="p-2 text-2xl text-slate-300 hover:text-slate-100 md:hidden"
           onClick={closeSearchBar}
         >
           <i className="bx bx-left-arrow-alt mt-1"></i>
         </button>
 
-        <div className="flex flex-1 items-center overflow-hidden rounded-md border border-blue-600 bg-slate-200 pl-3">
+        <div className={styles.searchBarContainer}>
           <input
+            ref={searchInputRef}
             type="text"
             placeholder="Search"
-            className="h-full w-full flex-1 bg-transparent outline-none"
+            onFocus={() => setIsOpenRecentSearch(true)}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className={styles.searchBarTextInput}
           />
-
-          <button
-            className="bg-blue-600 px-4 py-2 text-xl text-slate-300 transition-all duration-100 ease-in-out hover:text-slate-100"
-            onClick={handleSearch}
-          >
-            <i className="bx bx-search-alt-2 mt-1"></i>
+          <button className={`${styles.searchBtn}`} onClick={handleSearch}>
+            <span className="hidden md:block">Search</span>
+            <i className="bx bx-search-alt-2 mt-1 md:hidden"></i>
           </button>
+
+          {/* Recent Search Component */}
+          <RecentSearch
+            isOpenRecentSearch={isOpenRecentSearch}
+            recentSearchRef={recentSearchRef}
+          />
         </div>
       </div>
-    </>
+    </div>
   )
 }

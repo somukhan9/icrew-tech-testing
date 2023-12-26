@@ -8,10 +8,6 @@ import { categories } from './categories'
 import styles from './index.module.css'
 
 export default function Shop() {
-  const shopDropDownIDesktopRef = useRef()
-  const shopDropDownIMobileMinusRef = useRef()
-  const shopDropDownIMobilePlusRef = useRef()
-  const shopDropDownBtnRef = useRef()
   const shopDropDownLiRef = useRef()
   const shopDropDownContainerRef = useRef()
   const [isOpenShopDropDown, setIsOpenShopDropDown] = useState(false)
@@ -25,18 +21,22 @@ export default function Shop() {
   }
 
   useEffect(() => {
-    window.addEventListener('click', function (e) {
+    const handleOpenShopDropDown = (event) => {
       if (
-        e.target !== shopDropDownBtnRef.current &&
-        e.target !== shopDropDownContainerRef.current &&
-        e.target !== shopDropDownIDesktopRef.current &&
-        e.target !== shopDropDownIMobileMinusRef.current &&
-        e.target !== shopDropDownIMobilePlusRef.current &&
-        e.target !== shopDropDownLiRef.current
+        shopDropDownLiRef.current &&
+        !shopDropDownLiRef.current.contains(event.target) &&
+        shopDropDownContainerRef.current &&
+        !shopDropDownContainerRef.current.contains(event.target)
       ) {
         closeDropDown()
       }
-    })
+    }
+
+    document.addEventListener('click', handleOpenShopDropDown)
+
+    return () => {
+      document.removeEventListener('click', handleOpenShopDropDown)
+    }
   }, [])
 
   return (
@@ -46,14 +46,9 @@ export default function Shop() {
         onClick={handleShopDropDown}
         className={`flex w-max cursor-pointer items-center ${styles.menuBarLink}`}
       >
-        <button ref={shopDropDownBtnRef} className="flex items-center">
-          Shop
-        </button>
+        <button className="flex items-center">Shop</button>
         <div className="hidden text-2xl md:inline-block">
-          <i
-            ref={shopDropDownIDesktopRef}
-            className="bx bx-chevron-down mt-1"
-          ></i>
+          <i className="bx bx-chevron-down mt-1"></i>
         </div>
         <div
           className={`inline-block text-lg transition-all duration-300 md:hidden ${classnames(
@@ -64,12 +59,9 @@ export default function Shop() {
           )}`}
         >
           {isOpenShopDropDown ? (
-            <i
-              ref={shopDropDownIMobileMinusRef}
-              className="bx bx-minus mt-1"
-            ></i>
+            <i className="bx bx-minus mt-1"></i>
           ) : (
-            <i ref={shopDropDownIMobilePlusRef} className="bx bx-plus mt-2"></i>
+            <i className="bx bx-plus mt-2"></i>
           )}
         </div>
       </li>
@@ -78,27 +70,29 @@ export default function Shop() {
         className={`w-max ${styles.dropDownContainerMobile} ${
           styles.dropDownContainerDesktop
         } ${classnames({
-          'h-0 overflow-hidden md:h-auto md:scale-0': !isOpenShopDropDown,
-          'md:scale-1 h-auto p-2 md:h-auto': isOpenShopDropDown,
+          'h-0 overflow-hidden md:hidden md:h-auto md:scale-0':
+            !isOpenShopDropDown,
+          'md:scale-1 h-auto p-2 md:block': isOpenShopDropDown,
         })}`}
       >
         <div className="grid grid-cols-1 gap-y-1 md:grid-cols-2 md:gap-x-10 md:gap-y-3">
           {categories.map((category, index) => (
             <div key={index} className="flex flex-col">
-              <li
-                onClick={closeDropDown}
-                className="cursor-pointer text-sm font-semibold hover:text-slate-100 md:text-lg md:font-bold md:hover:text-slate-950"
-              >
-                <Link href={category.href}>{category.name}</Link>
+              <li className="w-max text-sm font-semibold hover:text-slate-100 md:text-lg md:font-bold md:hover:text-slate-950">
+                <Link href={category.href} onClick={closeDropDown}>
+                  {category.name}
+                </Link>
               </li>
               <ul className="flex-col gap-1 pl-2 md:flex  md:pl-0">
                 {category.subCategories?.map((subCategory, index) => (
                   <li
                     key={index}
                     onClick={closeDropDown}
-                    className="cursor-pointer text-xs hover:text-slate-100 md:text-sm md:hover:text-slate-950"
+                    className="w-max text-xs hover:text-slate-100 md:text-sm md:hover:text-slate-950"
                   >
-                    <Link href={subCategory.href}>{subCategory.name}</Link>
+                    <Link href={subCategory.href} onClick={closeDropDown}>
+                      {subCategory.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
