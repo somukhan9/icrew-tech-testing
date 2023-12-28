@@ -30,18 +30,10 @@ export default function AuthenticatedUserDropDown({
     <div
       ref={authenticatedUserElementRef}
       className={`${styles.authenticatedUserDropDownContainer} ${classnames({
-        'scale-0': !isOpenAuthenticatedUserDropDown,
-        'scale-100': isOpenAuthenticatedUserDropDown,
+        'hidden scale-0': !isOpenAuthenticatedUserDropDown,
+        'block scale-100': isOpenAuthenticatedUserDropDown,
       })}`}
     >
-      <button
-        className={styles.authenticatedUserDropDownCloseBtn}
-        onClick={closeAuthenticatedUserDropDown}
-      >
-        <span className="text-md absolute right-2 text-xl font-bold">
-          &times;
-        </span>
-      </button>
       <div className="mr-8 flex-col space-y-2 p-4">
         {authenticatedLinks.map((link) => (
           <Link

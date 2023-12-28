@@ -1,10 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import UnAuthenticatedUserDropDown from './UnAuthenticatedUserDropDown'
 import styles from './index.module.css'
 
 export default function UnAuthenticatedUserComponentContainer() {
+  const openUnAuthenticatedDropDownBtnRef = useRef()
+
   const [isSignIn, setIsSignIn] = useState(true)
   const [
     isOpenUnAuthenticatedUserDropDown,
@@ -22,6 +24,7 @@ export default function UnAuthenticatedUserComponentContainer() {
   return (
     <div className="sm:relative">
       <button
+        ref={openUnAuthenticatedDropDownBtnRef}
         onClick={toggleUnAuthenticatedUserDropDown}
         className={`${styles.link} flex items-center justify-center`}
       >
@@ -32,6 +35,7 @@ export default function UnAuthenticatedUserComponentContainer() {
         setIsSignIn={setIsSignIn}
         isOpenUnAuthenticatedUserDropDown={isOpenUnAuthenticatedUserDropDown}
         closeUnAuthenticatedUserDropDown={closeUnAuthenticatedUserDropDown}
+        openUnAuthenticatedDropDownBtnRef={openUnAuthenticatedDropDownBtnRef}
       />
     </div>
   )

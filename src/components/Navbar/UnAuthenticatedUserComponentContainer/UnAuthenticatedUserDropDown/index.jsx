@@ -11,12 +11,37 @@ export default function UnAuthenticatedUserDropDown({
   setIsSignIn,
   isOpenUnAuthenticatedUserDropDown,
   closeUnAuthenticatedUserDropDown,
+  openUnAuthenticatedDropDownBtnRef,
 }) {
+  const openUnAuthenticatedDropDownRef = useRef()
+
+  useEffect(() => {
+    const handleUnAuthenticatedDropDown = (event) => {
+      if (
+        openUnAuthenticatedDropDownBtnRef.current &&
+        !openUnAuthenticatedDropDownBtnRef.current.contains(event.target) &&
+        openUnAuthenticatedDropDownRef.current &&
+        !openUnAuthenticatedDropDownRef.current.contains(event.target)
+      ) {
+        closeUnAuthenticatedUserDropDown()
+      }
+    }
+
+    document.addEventListener('click', handleUnAuthenticatedDropDown)
+
+    return () => {
+      document.removeEventListener('click', handleUnAuthenticatedDropDown)
+    }
+
+    //eslint-disable-next-line
+  }, [])
+
   return (
     <div
+      ref={openUnAuthenticatedDropDownRef}
       className={`${styles.unAuthenticatedUserDropDownContainer} ${classnames({
-        'scale-100': isOpenUnAuthenticatedUserDropDown,
-        'scale-0': !isOpenUnAuthenticatedUserDropDown,
+        'block scale-100': isOpenUnAuthenticatedUserDropDown,
+        'hidden scale-0': !isOpenUnAuthenticatedUserDropDown,
       })}`}
     >
       <button

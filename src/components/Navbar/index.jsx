@@ -22,7 +22,8 @@ export default function Navbar() {
   const [isOpenSearchBar, setIsOpenSearchBar] = useState(false)
   const [isOpenLanguageDropDown, setIsOpenLanguageDropDown] = useState(false)
   const collectZones = useZoneStore((state) => state.collectZones)
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn)
+  // const isLoggedIn = useAuthStore((state) => state.isLoggedIn)
+  const isLoggedIn = true
 
   const openSearchBar = () => {
     setIsOpenSearchBar(true)
@@ -111,26 +112,12 @@ export default function Navbar() {
               onClick={toggleLanguageSelectionDropDown}
               className={`${styles.link} flex items-center justify-center`}
             >
-              <p
-                ref={languageSelectionDropDownOpenPRef}
-                className="inline-block h-full w-full text-sm"
-              >
-                Eng
-              </p>
-              <i
-                ref={languageSelectionDropDownOpenIRef}
-                className="bx bx-chevron-down inline-block"
-              ></i>
+              <p className="inline-block h-full w-full text-sm">Eng</p>
+              <i className="bx bx-chevron-down inline-block"></i>
             </button>
 
             {/* Language Selection Options Dropdown */}
             <LanguageSelectionDropDown
-              languageSelectionDropDownOpenPRef={
-                languageSelectionDropDownOpenPRef
-              }
-              languageSelectionDropDownOpenIRef={
-                languageSelectionDropDownOpenIRef
-              }
               languageSelectionDropDownOpenBtnRef={
                 languageSelectionDropDownOpenBtnRef
               }

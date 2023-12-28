@@ -22,24 +22,36 @@ export default function AuthenticatedUserElementContainer() {
   }
 
   useEffect(() => {
-    window.addEventListener('click', function (e) {
+    const handleAuthenticatedUserDropDown = (event) => {
       if (
-        e.target !== authenticatedUserBtnRef.current &&
-        e.target !== authenticatedUserElementRef.current
+        authenticatedUserBtnRef.current &&
+        !authenticatedUserBtnRef.current.contains(event.target) &&
+        authenticatedUserElementRef.current &&
+        !authenticatedUserElementRef.current.contains(event.target)
       ) {
         closeAuthenticatedUserDropDown()
+        console.log('hello')
       }
-    })
+    }
+
+    document.addEventListener('click', handleAuthenticatedUserDropDown)
+
+    return () => {
+      document.removeEventListener('click', handleAuthenticatedUserDropDown)
+    }
   }, [])
+
+  // useEffect(() => {}, [])
 
   return (
     <>
       <div className="relative">
         <button
+          ref={authenticatedUserBtnRef}
           onClick={toggleAuthenticatedUserDropDown}
           className={styles.link}
         >
-          <i ref={authenticatedUserBtnRef} className="bx bxs-user"></i>
+          <i className="bx bxs-user"></i>
         </button>
         <AuthenticatedUserDropDown
           authenticatedUserElementRef={authenticatedUserElementRef}
