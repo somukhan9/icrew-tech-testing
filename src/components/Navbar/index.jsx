@@ -22,8 +22,7 @@ export default function Navbar() {
   const [isOpenSearchBar, setIsOpenSearchBar] = useState(false)
   const [isOpenLanguageDropDown, setIsOpenLanguageDropDown] = useState(false)
   const collectZones = useZoneStore((state) => state.collectZones)
-  // const isLoggedIn = useAuthStore((state) => state.isLoggedIn)
-  const isLoggedIn = true
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn)
 
   const openSearchBar = () => {
     setIsOpenSearchBar(true)
