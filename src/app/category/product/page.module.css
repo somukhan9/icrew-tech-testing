@@ -2,6 +2,10 @@
   @apply mx-auto px-4 py-12;
 }
 
+.breadCrumbContainer {
+  @apply mx-auto my-8 w-4/5 max-w-5xl pl-4  lg:w-full;
+}
+
 .productDetailsContainer {
   @apply mx-auto flex w-4/5 max-w-5xl flex-col items-start gap-6 lg:w-full lg:flex-row lg:items-center;
 }

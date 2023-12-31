@@ -6,6 +6,7 @@ import ProductImageContainer from '@/components/PDP/ProductImageContainer'
 import ProductDescriptionContainer from '@/components/PDP/ProductDescriptionContainer'
 import ProductTab from '@/components/PDP/ProductTab'
 import RelatedProducts from '@/components/PDP/RelatedProducts'
+import BreadCrumb from '@/components/BreadCrumb'
 
 const productImages = [
   {
@@ -41,6 +42,9 @@ const poppins = Poppins({
 export default function PDP() {
   return (
     <section className={`${styles.pdpContainer} ${poppins.className}`}>
+      <div className={styles.breadCrumbContainer}>
+        <BreadCrumb />
+      </div>
       <div className={styles.productDetailsContainer}>
         {/* Product Image Container */}
         <ProductImageContainer productImages={productImages} />
