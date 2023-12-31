@@ -15,7 +15,7 @@ export default function HotDeals() {
       </div>
       <div className="grid h-[80%] w-[90%] grid-cols-2 shadow sm:grid-cols-3 md:grid-cols-5">
         <div className="group col-span-2 row-span-2 flex flex-col items-center justify-evenly border-b border-l border-t border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
-          <div className="relative sm:h-[200px] sm:w-[80%]">
+          <div className="relative h-[200px] w-[80%]">
             <Image
               src={veg}
               fill

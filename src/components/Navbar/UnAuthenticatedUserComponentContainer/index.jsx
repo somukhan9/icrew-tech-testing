@@ -22,7 +22,7 @@ export default function UnAuthenticatedUserComponentContainer() {
   }
 
   return (
-    <div className="sm:relative">
+    <div className="xsm:relative">
       <button
         ref={openUnAuthenticatedDropDownBtnRef}
         onClick={toggleUnAuthenticatedUserDropDown}
