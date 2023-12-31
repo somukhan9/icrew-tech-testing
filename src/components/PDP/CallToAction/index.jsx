@@ -27,7 +27,9 @@ export default function CallToAction() {
           <input
             type="number"
             value={itemCount}
-            onChange={(e) => setItemCount(parseInt(e.target.value) || 1)}
+            onChange={(e) =>
+              setItemCount(Math.abs(parseInt(e.target.value)) || 1)
+            }
             className="w-14 bg-transparent text-center text-xl caret-transparent outline-none"
           />
           <button className={styles.ctaAddSubBtn} onClick={increaseByOne}>
