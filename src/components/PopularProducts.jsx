@@ -5,19 +5,19 @@ import fruits from 'public/fruits.jpg'
 
 export default function PopularProducts() {
   return (
-    <div className="flex flex-col justify-evenly w-full items-center mt-20">
-      <div className="flex justify-between w-[90%] mb-8">
+    <div className="mt-20 flex w-full flex-col items-center justify-evenly">
+      <div className="mb-8 flex w-[90%] justify-between">
         <p className="text-3xl font-semibold text-slate-800">
           Popular Products
         </p>
-        <div className="flex items-center w-[100px] text-blue-600 font-semibold cursor-pointer">
+        <div className="flex w-[100px] cursor-pointer items-center font-semibold text-blue-600">
           <p>View All</p>
           <i className="bx bx-right-arrow-alt bx-sm"></i>
         </div>
       </div>
-      <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 w-[90%] h-[80%] shadow">
-        <div className="col-span-1 border-gray-200 border-t border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+      <div className="grid h-[80%] w-[90%] grid-cols-2 shadow sm:grid-cols-3 md:grid-cols-5">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-t border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={veg}
               fill
@@ -25,21 +25,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Green Apple
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 350</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 400
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-t border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto bg-white relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-t border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px] bg-white">
             <Image
               src={fruits}
               fill
@@ -47,21 +47,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Green Apple
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 350</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 400
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-t border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-t border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={fish}
               fill
@@ -69,21 +69,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Green Apple
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 350</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 400
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-t border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-t border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={veg}
               fill
@@ -91,21 +91,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Green Apple
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 350</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 400
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-t border-l border-b border-r hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-r border-t border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={veg}
               fill
@@ -113,21 +113,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Green Apple
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 350</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 400
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={veg}
               fill
@@ -135,21 +135,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Green Apple
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 350</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 400
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={veg}
               fill
@@ -157,21 +157,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Banana
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 80</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 120
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={veg}
               fill
@@ -179,21 +179,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Green Apple
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 350</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 400
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={veg}
               fill
@@ -201,21 +201,21 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Green Apple
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 350</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 400
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
-        <div className="col-span-1 border-gray-200 border-r border-l border-b hover:border-green-600 hover:border hover:shadow-lg flex flex-col justify-center group">
-          <div className="sm:h-[120px] sm:w-[120px] m-auto relative">
+        <div className="group col-span-1 flex flex-col justify-center border-b border-l border-r border-gray-200 hover:border hover:border-green-600 hover:shadow-lg">
+          <div className="relative m-auto h-[120px] w-[120px]">
             <Image
               src={veg}
               fill
@@ -223,17 +223,17 @@ export default function PopularProducts() {
               className="object-cover"
             />
           </div>
-          <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
+          <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
             Potato
           </p>
-          <div className="flex justify-between items-center w-[90%] m-auto mb-1 mt-1">
-            <div className="flex justify-evenly w-[60%]">
+          <div className="m-auto mb-1 mt-1 flex w-[90%] items-center justify-between">
+            <div className="flex w-[60%] justify-evenly">
               <p className="text-base font-semibold">৳ 50</p>
               <p className="text-base font-semibold text-gray-500 line-through">
                 ৳ 100
               </p>
             </div>
-            <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
+            <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
           </div>
         </div>
       </div>
