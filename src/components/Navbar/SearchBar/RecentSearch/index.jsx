@@ -3,14 +3,22 @@ import classnames from 'classnames'
 
 import { useRecentSearchService } from '@/services/RecentSearch/recentSearch'
 import { useRecentSearchStore } from '@/store/recentSearch'
+import { useRouter } from 'next/navigation'
 
 export default function RecentSearch({ isOpenRecentSearch, recentSearchRef }) {
+  const router = useRouter()
   const { recentSearches } = useRecentSearchStore()
   const { removeFromRecentSearch } = useRecentSearchService()
   const [isClient, setIsClient] = useState(false)
 
   const removeQueryFromRecentSearch = (query) => {
     removeFromRecentSearch(query)
+  }
+
+  const makeSearchFromRecentSearch = (item) => {
+    const searchParams = new URLSearchParams(window.location.search)
+    searchParams.set('search', item)
+    router.push(`/products?${searchParams.toString()}`)
   }
 
   useEffect(() => {
@@ -36,7 +44,12 @@ export default function RecentSearch({ isOpenRecentSearch, recentSearchRef }) {
           key={index}
           className="flex items-center justify-between gap-2 px-4 py-1 text-slate-200 hover:bg-slate-800"
         >
-          <button className="flex-1 cursor-default text-left text-sm">
+          <button
+            className="flex-1 cursor-default text-left text-sm"
+            onClick={() => {
+              makeSearchFromRecentSearch(item)
+            }}
+          >
             <span>{item}</span>
           </button>
           <button

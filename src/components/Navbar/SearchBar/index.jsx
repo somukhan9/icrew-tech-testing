@@ -6,11 +6,13 @@ import { useRecentSearchService } from '@/services/RecentSearch/recentSearch'
 
 import styles from './index.module.css'
 import RecentSearch from './RecentSearch'
+import { useRouter } from 'next/navigation'
 
 export default function SearchBar({ isOpenSearchBar, closeSearchBar }) {
   const { addToRecentSearch } = useRecentSearchService()
   const searchInputRef = useRef()
   const recentSearchRef = useRef()
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState('')
   const [isOpenRecentSearch, setIsOpenRecentSearch] = useState(false)
 
@@ -18,6 +20,9 @@ export default function SearchBar({ isOpenSearchBar, closeSearchBar }) {
     if (!searchQuery) {
       return
     }
+    const searchParams = new URLSearchParams(window.location.search)
+    searchParams.set('search', searchQuery)
+    router.push(`/products/?${searchParams.toString()}`, { scroll: false })
     addToRecentSearch(searchQuery)
     setSearchQuery('')
   }

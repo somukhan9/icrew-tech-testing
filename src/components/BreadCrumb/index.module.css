@@ -1,0 +1,3 @@
+.breadCrumbContainer {
+  @apply mx-auto my-8 w-3/4 pl-4  lg:w-full;
+}

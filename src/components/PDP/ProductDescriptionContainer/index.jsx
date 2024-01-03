@@ -39,10 +39,10 @@ export default function ProductDescriptionContainer({ productTags }) {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
             <p className="text-sm text-[#B3B3B3] line-through sm:text-xl">
-              $48.00
+              ৳48.00
             </p>
             <p className="text-base font-medium text-[#2C742F] sm:text-2xl">
-              $17.28
+              ৳17.28
             </p>
           </div>
           <div className="rounded-full bg-[#EA4B481A] px-4 py-2">

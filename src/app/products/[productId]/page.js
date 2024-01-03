@@ -41,26 +41,26 @@ const poppins = Poppins({
 
 export default function PDP() {
   return (
-    <section className={`${styles.pdpContainer} ${poppins.className}`}>
-      <div className={styles.breadCrumbContainer}>
-        <BreadCrumb />
-      </div>
-      <div className={styles.productDetailsContainer}>
-        {/* Product Image Container */}
-        <ProductImageContainer productImages={productImages} />
+    <>
+      <BreadCrumb />
+      <section className={`${styles.pdpContainer} ${poppins.className}`}>
+        <div className={styles.productDetailsContainer}>
+          {/* Product Image Container */}
+          <ProductImageContainer productImages={productImages} />
 
-        {/* Product Description Container */}
-        <ProductDescriptionContainer productTags={productTags} />
-      </div>
+          {/* Product Description Container */}
+          <ProductDescriptionContainer productTags={productTags} />
+        </div>
 
-      {/* Product Content */}
-      <div className={styles.productContentContainer}>
-        {/* Product Tab */}
-        <ProductTab />
-      </div>
-      <div className={styles.relatedProductsContainer}>
-        <RelatedProducts />
-      </div>
-    </section>
+        {/* Product Content */}
+        <div className={styles.productContentContainer}>
+          {/* Product Tab */}
+          <ProductTab />
+        </div>
+        <div className={styles.relatedProductsContainer}>
+          <RelatedProducts />
+        </div>
+      </section>
+    </>
   )
 }
