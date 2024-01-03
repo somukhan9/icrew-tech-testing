@@ -39,7 +39,9 @@ const poppins = Poppins({
   subsets: ['latin'],
 })
 
-export default function PDP() {
+export default function PDP({ params: { productId } }) {
+  console.log(productId)
+
   return (
     <>
       <BreadCrumb />

@@ -5,7 +5,11 @@ import { useRecentSearchService } from '@/services/RecentSearch/recentSearch'
 import { useRecentSearchStore } from '@/store/recentSearch'
 import { useRouter } from 'next/navigation'
 
-export default function RecentSearch({ isOpenRecentSearch, recentSearchRef }) {
+export default function RecentSearch({
+  isOpenRecentSearch,
+  recentSearchRef,
+  closeRecentSearchDropDown,
+}) {
   const router = useRouter()
   const { recentSearches } = useRecentSearchStore()
   const { removeFromRecentSearch } = useRecentSearchService()
@@ -19,6 +23,7 @@ export default function RecentSearch({ isOpenRecentSearch, recentSearchRef }) {
     const searchParams = new URLSearchParams(window.location.search)
     searchParams.set('search', item)
     router.push(`/products?${searchParams.toString()}`)
+    closeRecentSearchDropDown()
   }
 
   useEffect(() => {

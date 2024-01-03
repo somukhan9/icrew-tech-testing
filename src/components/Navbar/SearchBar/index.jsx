@@ -27,6 +27,10 @@ export default function SearchBar({ isOpenSearchBar, closeSearchBar }) {
     setSearchQuery('')
   }
 
+  const closeRecentSearchDropDown = () => {
+    setIsOpenRecentSearch(false)
+  }
+
   useEffect(() => {
     const handleShowRecentSearch = (event) => {
       if (
@@ -35,7 +39,7 @@ export default function SearchBar({ isOpenSearchBar, closeSearchBar }) {
         recentSearchRef.current &&
         !recentSearchRef.current.contains(event.target)
       ) {
-        setIsOpenRecentSearch(false)
+        closeRecentSearchDropDown()
       }
     }
 
@@ -82,6 +86,7 @@ export default function SearchBar({ isOpenSearchBar, closeSearchBar }) {
           <RecentSearch
             isOpenRecentSearch={isOpenRecentSearch}
             recentSearchRef={recentSearchRef}
+            closeRecentSearchDropDown={closeRecentSearchDropDown}
           />
         </div>
       </div>

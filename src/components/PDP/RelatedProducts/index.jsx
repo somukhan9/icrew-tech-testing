@@ -3,7 +3,6 @@ import Image from 'next/image'
 import classnames from 'classnames'
 
 import styles from './index.module.css'
-import { currencyFormatter } from '@/utils/currencyFormat'
 
 const relatedProducts = [
   {
@@ -67,7 +66,7 @@ export default function RelatedProducts() {
                   <p className="flex gap-2">
                     {product.priceWithDiscount && (
                       <span className="text-base text-[#1A1A1A]">
-                        ${product.priceWithDiscount}
+                        ৳{product.priceWithDiscount}
                       </span>
                     )}
                     <span
@@ -77,7 +76,7 @@ export default function RelatedProducts() {
                         'text-[#1A1A1A]': !product.priceWithDiscount,
                       })}`}
                     >
-                      ${product.price}
+                      ৳{product.price}
                     </span>
                   </p>
                   <div className="flex gap-1">
