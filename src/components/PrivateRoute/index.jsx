@@ -25,5 +25,11 @@ export default function PrivateRoute({ children }) {
     }
   }
 
-  return <></>
+  return (
+    <div className="fixed bottom-0 left-0 right-0 top-0 z-[1000] flex items-center justify-center bg-black opacity-95">
+      <h2 className="text-2xl font-bold tracking-wide text-white md:text-4xl">
+        Verifying Identity...
+      </h2>
+    </div>
+  )
 }
