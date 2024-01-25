@@ -74,7 +74,7 @@ export default function Dashboard({
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-4 md:flex-nowrap md:items-start">
-        <div className="flex flex-auto flex-col items-center justify-center gap-2 rounded-md border border-gray-200 p-4">
+        <div className="flex flex-auto flex-col items-start justify-center gap-2 rounded-md border border-gray-200 p-4 md:items-center">
           <div className="relative h-[120px] w-[120px] overflow-hidden rounded-full object-cover">
             <Image src={ProfileImage} alt="Profile Image" fill />
           </div>
