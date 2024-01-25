@@ -59,7 +59,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
         )
 
         const data = await response.json()
-        // console.log(data)
+        console.log(data)
 
         if (data.success) {
           toast.success(data.message)
@@ -68,7 +68,8 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
         }
 
         if (response.ok) {
-          signIn(data.accessToken)
+          const { accessToken } = data.data
+          signIn(accessToken)
           reset()
         }
       } else {

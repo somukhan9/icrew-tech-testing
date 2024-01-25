@@ -15,8 +15,6 @@ import { useAuthStore } from '@/store/auth'
 import Spinner from '../Spinner'
 
 export default function Navbar() {
-  const languageSelectionDropDownOpenIRef = useRef()
-  const languageSelectionDropDownOpenPRef = useRef()
   const languageSelectionDropDownOpenBtnRef = useRef()
   const [isClient, setIsClient] = useState(false)
   const [isOpenSearchBar, setIsOpenSearchBar] = useState(false)
