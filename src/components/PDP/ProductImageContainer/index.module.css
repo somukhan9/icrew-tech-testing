@@ -1,5 +1,5 @@
 .productImagesContainer {
-  @apply flex flex-col items-center gap-4 lg:flex-row;
+  @apply flex w-full flex-col items-center gap-4 lg:flex-row;
 }
 
 .productImageChangerBtn {

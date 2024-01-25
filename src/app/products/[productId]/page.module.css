@@ -3,13 +3,13 @@
 }
 
 .productDetailsContainer {
-  @apply mx-auto flex w-4/5 max-w-5xl flex-col items-start gap-6 lg:w-full lg:flex-row lg:items-center;
+  @apply mx-auto flex w-[90%] max-w-5xl flex-wrap items-start gap-6 lg:w-full lg:flex-nowrap lg:items-center;
 }
 
 .productContentContainer {
-  @apply mx-auto mt-4 w-4/5 max-w-5xl lg:w-full;
+  @apply mx-auto mt-4 w-[90%] max-w-5xl lg:w-full;
 }
 
 .relatedProductsContainer {
-  @apply mx-auto w-4/5 max-w-5xl py-12 lg:w-full;
+  @apply mx-auto w-[90%] max-w-5xl py-12 lg:w-full;
 }

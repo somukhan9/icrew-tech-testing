@@ -8,8 +8,16 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 }
 
 module.exports = nextConfig
+
+// https://res.cloudinary.com

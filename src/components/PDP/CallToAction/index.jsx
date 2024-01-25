@@ -4,8 +4,8 @@ import { useState } from 'react'
 
 import styles from './index.module.css'
 
-export default function CallToAction() {
-  const [itemCount, setItemCount] = useState(5)
+export default function CallToAction({ product }) {
+  const [itemCount, setItemCount] = useState(1)
 
   const increaseByOne = () => {
     setItemCount((prev) => prev + 1)
@@ -37,7 +37,7 @@ export default function CallToAction() {
           </button>
         </div>
 
-        <p>Unit</p>
+        <p>{product.unit}</p>
       </div>
       <button className={styles.addToCartBtn}>
         <p>Add to Cart</p> <i className="bx bx-shopping-bag text-xl"></i>

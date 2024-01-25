@@ -1,10 +1,11 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
 import { dummyProducts as data } from '@/dummyProducts'
 
-export default function Pagination() {
+export default function Pagination({ products }) {
   const [currentPage, setCurrentPage] = useState(1)
   const [recordsPerPage] = useState(16)
   const indexOfLastRecord = currentPage * recordsPerPage
@@ -29,45 +30,49 @@ export default function Pagination() {
     page > 1 && setCurrentPage(--page)
   }
 
+  console.log(products)
+
   return (
     <>
-      <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-5 w-[90%] h-[80%] my-8 mx-auto">
-        {currentRecords.map((p, i) => (
+      <div className="mx-auto my-8 grid h-[80%] w-[90%] grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+        {products.map((p, i) => (
           <div
-            key={i}
-            className="col-span-1 border-gray-200 border hover:border-green-600 rounded-md hover:border hover:shadow-lg flex flex-col justify-center group"
+            key={p.id}
+            className="group col-span-1 flex flex-col justify-center rounded-md border border-gray-200 hover:border hover:border-green-600 hover:shadow-lg"
           >
-            <div className="h-[120px] w-[120px] m-auto relative">
-              <Image
-                src={p.image}
-                fill
-                alt="Category items"
-                className="object-cover"
-              />
-            </div>
-            <p className="text-sm text-gray-600 font-semibold ml-[22px] mb-[-10px] group-hover:text-green-600">
-              {p.name}
-            </p>
-            <div className="flex justify-between items-center w-[95%] mb-1 mt-1">
-              <div className="flex justify-start sm:w-[60%] w-[80%]">
-                <p className="text-base font-semibold sm:ml-5 ml-1">
-                  ৳ {p.price}
-                </p>
-                <p className="text-base font-semibold sm:ml-3 ml-2 text-gray-500 line-through">
-                  ৳ {p.price + p.discount}
-                </p>
+            <Link href={`/products/${p.slug}`}>
+              <div className="relative m-auto h-[120px] w-[120px]">
+                <Image
+                  src={p.productImages[0].url.secure_url}
+                  fill
+                  alt="Category items"
+                  className="object-cover"
+                />
               </div>
-              <i className="bx bx-shopping-bag bx-sm rounded-full bg-gray-300 group-hover:bg-blue-600 group-hover:text-white p-2 cursor-pointer"></i>
-            </div>
+              <p className="mb-[-10px] ml-[22px] text-sm font-semibold text-gray-600 group-hover:text-green-600">
+                {p.name}
+              </p>
+              <div className="mb-1 mt-1 flex w-[95%] items-center justify-between">
+                <div className="flex w-[80%] justify-start sm:w-[60%]">
+                  <p className="ml-1 text-base font-semibold sm:ml-5">
+                    ৳ {p.price}
+                  </p>
+                  <p className="ml-2 text-base font-semibold text-gray-500 line-through sm:ml-3">
+                    ৳ {p.price}
+                  </p>
+                </div>
+                <i className="bx bx-shopping-bag bx-sm cursor-pointer rounded-full bg-gray-300 p-2 group-hover:bg-blue-600 group-hover:text-white"></i>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
 
-      <div className="flex bg-white rounded-lg font-[Poppins] mx-auto w-max mb-10">
+      <div className="mx-auto mb-10 flex w-max rounded-lg bg-white font-[Poppins]">
         <button
           onClick={() => back(currentPage)}
-          className="h-12 border-2 border-gray-200 flex items-center justify-center text-gray-500
-                px-4 mr-4 rounded-full hover:bg-green-600 hover:border-green-600 hover:text-white"
+          className="mr-4 flex h-12 items-center justify-center rounded-full border-2
+                border-gray-200 px-4 text-gray-500 hover:border-green-600 hover:bg-green-600 hover:text-white"
         >
           <i className="bx bx-left-arrow-alt bx-sm"></i>
         </button>
@@ -75,8 +80,8 @@ export default function Pagination() {
           <button
             key={i}
             onClick={() => setCurrentPage(pg.page)}
-            className={`h-12 border-0 rounded-full border-green-600 text-gray-600
-                    text-lg w-12 mr-4 ${
+            className={`mr-4 h-12 w-12 rounded-full border-0
+                    border-green-600 text-lg text-gray-600 ${
                       currentPage === pg.page && 'bg-green-600 text-white'
                     }`}
           >
@@ -85,8 +90,8 @@ export default function Pagination() {
         ))}
         <button
           onClick={() => Next(currentPage)}
-          className="h-12 border-2  border-gray-200 flex items-center justify-center text-gray-500
-                    px-4 rounded-full hover:bg-green-600 hover:border-green-600 hover:text-white"
+          className="flex h-12  items-center justify-center rounded-full border-2 border-gray-200
+                    px-4 text-gray-500 hover:border-green-600 hover:bg-green-600 hover:text-white"
         >
           <i className="bx bx-right-arrow-alt bx-sm"></i>
         </button>

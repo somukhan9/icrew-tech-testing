@@ -30,7 +30,6 @@ export default function AuthenticatedUserElementContainer() {
         !authenticatedUserElementRef.current.contains(event.target)
       ) {
         closeAuthenticatedUserDropDown()
-        console.log('hello')
       }
     }
 

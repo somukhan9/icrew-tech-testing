@@ -9,9 +9,9 @@ import { useAuthService } from '@/services/Auth/authService'
 import styles from './index.module.css'
 
 const authenticatedLinks = [
-  { label: 'Profile', href: '/profile' },
-  { label: 'Orders', href: '/orders' },
-  { label: 'Settings', href: '/settings' },
+  { label: 'Profile', href: '/profile?tab=1' },
+  { label: 'Orders', href: '/profile?tab=2' },
+  { label: 'Settings', href: '/profile?tab=5' },
 ]
 
 export default function AuthenticatedUserDropDown({

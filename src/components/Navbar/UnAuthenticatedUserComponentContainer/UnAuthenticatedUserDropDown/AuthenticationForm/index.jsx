@@ -59,7 +59,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
         )
 
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
 
         if (data.success) {
           toast.success(data.message)
@@ -79,7 +79,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
           buyer: { ...rest },
         }
 
-        console.log(body)
+        // console.log(body)
 
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/users/create-buyer`,
@@ -93,7 +93,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
         )
 
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
 
         if (data.success) {
           toast.success(data.message)
@@ -208,7 +208,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
             id="password"
             {...register('password')}
             className={styles.formControl}
-            onChange={(e) => e.target.value}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter password"
           />
           {errors['password'] && (

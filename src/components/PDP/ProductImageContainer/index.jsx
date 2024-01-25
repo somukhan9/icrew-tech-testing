@@ -40,7 +40,7 @@ export default function ProductImageContainer({ productImages }) {
           <div
             key={item.id}
             onClick={() => handleSelectImage(index)}
-            className={`relative my-4 h-10 w-10 cursor-pointer overflow-hidden rounded-md sm:h-14 sm:w-14 ${classnames(
+            className={`relative mx-4 my-0 h-10 w-10 cursor-pointer overflow-hidden rounded-md sm:h-14 sm:w-14 lg:mx-0 lg:my-4 ${classnames(
               {
                 'border-2 border-[#00B207]': currentImagePosition === index,
               },
@@ -48,7 +48,7 @@ export default function ProductImageContainer({ productImages }) {
           >
             <Image
               fill
-              src={item.img}
+              src={item.url.secure_url}
               alt="Product Image"
               className="object-cover"
             />
@@ -65,7 +65,7 @@ export default function ProductImageContainer({ productImages }) {
       <div className="relative h-[200px] w-[200px] xsm:h-[300px] xsm:w-[300px]">
         <Image
           fill
-          src={productImages[currentImagePosition].img}
+          src={productImages[currentImagePosition].url.secure_url}
           alt="Product Image"
           className="object-cover"
         />

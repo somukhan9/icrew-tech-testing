@@ -79,7 +79,7 @@ export default function SearchBar({ isOpenSearchBar, closeSearchBar }) {
           />
           <button className={`${styles.searchBtn}`} onClick={handleSearch}>
             <span className="hidden md:block">Search</span>
-            <i className="bx bx-search-alt-2 mt-1 md:hidden"></i>
+            <i className="bx bx-search-alt-2 mt-1 block md:hidden"></i>
           </button>
 
           {/* Recent Search Component */}

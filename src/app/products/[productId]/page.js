@@ -39,8 +39,25 @@ const poppins = Poppins({
   subsets: ['latin'],
 })
 
-export default function PDP({ params: { productId } }) {
-  console.log(productId)
+const getProductById = async (productId) => {
+  'use server'
+
+  const resp = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/${productId}`,
+  )
+  const { data } = await resp.json()
+
+  console.log(resp)
+
+  return data
+}
+
+export default async function PDP({ params: { productId } }) {
+  // console.log(productId)
+
+  const product = await getProductById(productId)
+
+  // console.log(product)
 
   return (
     <>
@@ -48,10 +65,13 @@ export default function PDP({ params: { productId } }) {
       <section className={`${styles.pdpContainer} ${poppins.className}`}>
         <div className={styles.productDetailsContainer}>
           {/* Product Image Container */}
-          <ProductImageContainer productImages={productImages} />
+          <ProductImageContainer productImages={product.productImages} />
 
           {/* Product Description Container */}
-          <ProductDescriptionContainer productTags={productTags} />
+          <ProductDescriptionContainer
+            product={product}
+            productTags={productTags}
+          />
         </div>
 
         {/* Product Content */}

@@ -1,0 +1,3 @@
+.orderDetailsProgressBar::before {
+  @apply absolute top-1/2 h-2 w-full -translate-y-1/2 bg-gray-400;
+}

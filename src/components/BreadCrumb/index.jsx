@@ -52,14 +52,15 @@ export default function BreadCrumb() {
             // console.log(url)
 
             return (
-              <div
-                key={index}
-                className="flex items-center gap-2 text-lg hover:text-black"
-              >
+              <div key={index} className="flex items-center gap-2 text-lg">
                 <i className="bx bx-chevron-right mt-1 block text-xl"></i>
-                <Link href={`${url}`} className="block">
-                  {item}
-                </Link>
+                {index === urls.length - 1 ? (
+                  <span className="block">{item}</span>
+                ) : (
+                  <Link href={`${url}`} className="block hover:text-black">
+                    {item}
+                  </Link>
+                )}
               </div>
             )
           })}

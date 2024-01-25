@@ -7,11 +7,17 @@ import BreadCrumb from '@/components/BreadCrumb'
 const filterProducts = async (filterOptions) => {
   'use server'
   // Make get request
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products`, {
+    cache: 'no-store',
+  })
+  const { data } = await resp.json()
+  // console.log(data)
+  return data
 }
 
 export default async function ProductList({ searchParams }) {
   // Set default values inside single quote
-  const products = filterProducts({
+  const products = await filterProducts({
     category: searchParams.category || '',
     price: searchParams.price || '',
     rating: searchParams.rating || '',
@@ -29,7 +35,7 @@ export default async function ProductList({ searchParams }) {
         <hr />
         <ActiveFilters />
         <hr />
-        <Pagination />
+        <Pagination products={products} />
       </div>
     </>
   )

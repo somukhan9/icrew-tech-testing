@@ -1,0 +1,3 @@
+.profilePageContainer {
+  @apply mx-auto mb-20 mt-10 max-w-5xl px-4;
+}
