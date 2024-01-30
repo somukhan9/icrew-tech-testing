@@ -1,3 +1,4 @@
+import { useEffect, forwardRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function DropDown({ listData, toggle, width, queryType }) {
@@ -15,11 +16,11 @@ export default function DropDown({ listData, toggle, width, queryType }) {
           key={i}
           onClick={() => {
             const searchParams = new URLSearchParams(window.location.search)
-            searchParams.set(queryType, item)
+            searchParams.set(queryType, item.value)
             router.replace(`?${searchParams.toString()}`, { scroll: false })
           }}
         >
-          {item}
+          {item.key}
         </li>
       ))}
     </ul>

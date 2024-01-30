@@ -40,8 +40,6 @@ export default function AuthenticatedUserElementContainer() {
     }
   }, [])
 
-  // useEffect(() => {}, [])
-
   return (
     <>
       <div className="relative">

@@ -47,7 +47,7 @@ const getProductById = async (productId) => {
   )
   const { data } = await resp.json()
 
-  console.log(resp)
+  // console.log(resp)
 
   return data
 }
@@ -70,7 +70,7 @@ export default async function PDP({ params: { productId } }) {
           {/* Product Description Container */}
           <ProductDescriptionContainer
             product={product}
-            productTags={productTags}
+            productTags={product.productTags}
           />
         </div>
 

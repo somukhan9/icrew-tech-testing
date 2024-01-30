@@ -1,41 +1,62 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import DropDown from './FilterDropdown'
 import { useSearchParams } from 'next/navigation'
 
-export default function Filters() {
-  const [catToggle, setCatToggle] = useState(1)
-  const [priceToggle, setPriceToggle] = useState(1)
-  const [ratingToggle, setRatingToggle] = useState(1)
-  const [sortByToggle, setSortByToggle] = useState(1)
+export default function Filters({ categories }) {
+  const [catToggle, setCatToggle] = useState(true)
+  const [priceToggle, setPriceToggle] = useState(true)
+  const [ratingToggle, setRatingToggle] = useState(true)
+  const [sortByToggle, setSortByToggle] = useState(true)
+  const [sortOrderToggle, setSortOrderToggle] = useState(true)
   const [showedProductsToggle, setShowedProductsToggle] = useState(1)
 
   const searchParams = useSearchParams()
   const category = searchParams.get('category') || ''
   const price = searchParams.get('price') || ''
   const rating = searchParams.get('rating') || ''
-  const sorting = searchParams.get('sorting') || 'Latest'
+  const sortByParam = searchParams.get('sortBy') || ''
+  const sortOrderParam = searchParams.get('sortOrder') || ''
   const productNumber = searchParams.get('productNumber') || 16
 
-  const categories = [
-    'Vegetables',
-    'Fresh Fruits',
-    'Fish',
-    'Meat',
-    'Water & Drinks',
-    'Snacks',
+  const categoryForFilters = categories.map((category) => ({
+    key: category.title,
+    value: category.slug,
+  }))
+
+  const prices = [
+    { key: 'Default', value: '' },
+    { key: 'Low to High', value: 'low-to-high' },
+    { key: 'High to Low', value: 'high-to-low' },
+  ]
+  const ratings = [
+    { key: '5 out of 5', value: 5 },
+    { key: '4+', value: 4 },
+    { key: '3+', value: 3 },
+    { key: '2+', value: 2 },
+    { key: '1', value: 1 },
+  ]
+  const sortBy = [
+    { key: 'Title', value: 'title' },
+    { key: 'Price', value: 'price' },
   ]
 
-  const prices = ['Default', 'Low to High', 'High to Low']
-  const ratings = ['5 out of 5', '4+', '3+', '2+', '1']
-  const sorts = ['Default', 'Latest', 'Oldest']
-  const numberOfProducts = ['16', '20', '32']
+  const sortOrder = [
+    { key: 'Latest', value: 'desc' },
+    { key: 'Oldest', value: 'asc' },
+  ]
+
+  const numberOfProducts = [
+    { key: 16, value: 16 },
+    { key: 20, value: 20 },
+    { key: 32, value: 32 },
+  ]
 
   return (
-    <div className="mx-auto my-5 flex w-[90%] flex-wrap justify-between">
-      <div className="flex flex-wrap">
-        <div className="relative mb-4 sm:mb-0">
+    <div className="mx-auto my-5 flex w-[90%] flex-wrap justify-between gap-4">
+      <div className="flex flex-wrap gap-4">
+        <div className="relative">
           <button
             onClick={() => setCatToggle(!catToggle)}
             className="mr-5 flex w-[180px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
@@ -44,7 +65,7 @@ export default function Filters() {
             <i className="bx bx-down-arrow-alt"></i>
           </button>
           <DropDown
-            listData={categories}
+            listData={categoryForFilters}
             toggle={catToggle}
             width={180}
             queryType="category"
@@ -61,7 +82,7 @@ export default function Filters() {
           <DropDown
             listData={prices}
             toggle={priceToggle}
-            width={150}
+            width={180}
             queryType="price"
           />
         </div>
@@ -76,25 +97,40 @@ export default function Filters() {
           <DropDown
             listData={ratings}
             toggle={ratingToggle}
-            width={150}
+            width={180}
             queryType="rating"
           />
         </div>
       </div>
-      <div className="mt-4 flex sm:mt-0">
+      <div className="flex flex-wrap gap-4">
         <div className="relative">
           <button
             onClick={() => setSortByToggle(!sortByToggle)}
             className="mr-5 flex w-[180px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
           >
-            <p>Sort by: {sorting}</p>
+            <p>Sort by: {sortByParam}</p>
             <i className="bx bx-down-arrow-alt"></i>
           </button>
           <DropDown
-            listData={sorts}
+            listData={sortBy}
             toggle={sortByToggle}
             width={180}
-            queryType="sorting"
+            queryType="sortBy"
+          />
+        </div>
+        <div className="relative">
+          <button
+            onClick={() => setSortOrderToggle((prev) => !prev)}
+            className="mr-5 flex w-[180px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
+          >
+            <p>Sort order: {sortOrderParam}</p>
+            <i className="bx bx-down-arrow-alt"></i>
+          </button>
+          <DropDown
+            listData={sortOrder}
+            toggle={sortOrderToggle}
+            width={180}
+            queryType="sortOrder"
           />
         </div>
         <div className="relative">
@@ -108,8 +144,8 @@ export default function Filters() {
           <DropDown
             listData={numberOfProducts}
             toggle={showedProductsToggle}
-            width={150}
-            queryType="productNumber"
+            width={180}
+            queryType="limit"
           />
         </div>
       </div>
