@@ -16,7 +16,7 @@ const relatedProducts = [
   {
     id: 2,
     img: '/assets/images/PDP/p2.png',
-    name: 'Chanise Cabbage',
+    name: 'Chinese Cabbage',
     price: 14.99,
     // priceWithDiscount: 14.99,
     rating: 5,

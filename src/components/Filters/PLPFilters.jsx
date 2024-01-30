@@ -82,7 +82,7 @@ export default function Filters({ categories }) {
           <DropDown
             listData={prices}
             toggle={priceToggle}
-            width={180}
+            width={150}
             queryType="price"
           />
         </div>
@@ -97,7 +97,7 @@ export default function Filters({ categories }) {
           <DropDown
             listData={ratings}
             toggle={ratingToggle}
-            width={180}
+            width={150}
             queryType="rating"
           />
         </div>
@@ -106,7 +106,7 @@ export default function Filters({ categories }) {
         <div className="relative">
           <button
             onClick={() => setSortByToggle(!sortByToggle)}
-            className="mr-5 flex w-[180px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
+            className="mr-5 flex w-[150px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
           >
             <p>Sort by: {sortByParam}</p>
             <i className="bx bx-down-arrow-alt"></i>
@@ -114,14 +114,14 @@ export default function Filters({ categories }) {
           <DropDown
             listData={sortBy}
             toggle={sortByToggle}
-            width={180}
+            width={150}
             queryType="sortBy"
           />
         </div>
         <div className="relative">
           <button
             onClick={() => setSortOrderToggle((prev) => !prev)}
-            className="mr-5 flex w-[180px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
+            className="mr-5 flex w-[150px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
           >
             <p>Sort order: {sortOrderParam}</p>
             <i className="bx bx-down-arrow-alt"></i>
@@ -129,7 +129,7 @@ export default function Filters({ categories }) {
           <DropDown
             listData={sortOrder}
             toggle={sortOrderToggle}
-            width={180}
+            width={150}
             queryType="sortOrder"
           />
         </div>
@@ -144,7 +144,7 @@ export default function Filters({ categories }) {
           <DropDown
             listData={numberOfProducts}
             toggle={showedProductsToggle}
-            width={180}
+            width={150}
             queryType="limit"
           />
         </div>

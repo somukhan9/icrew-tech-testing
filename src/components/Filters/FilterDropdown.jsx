@@ -1,4 +1,3 @@
-import { useEffect, forwardRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function DropDown({ listData, toggle, width, queryType }) {
