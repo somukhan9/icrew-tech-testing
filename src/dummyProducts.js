@@ -624,4 +624,18 @@ export const dummyProducts = [
     color: 'Orange',
     stockAvailability: true,
   },
+  {
+    name: 'Organic Broccoli',
+    image:
+      'https://images.pexels.com/photos/1414651/pexels-photo-1414651.jpeg?auto=compress&cs=tinysrgb&w=600',
+    description: 'Fresh and organic broccoli, packed with nutrients.',
+    price: 299,
+    discount: 20,
+    rating: 4.5,
+    unit: 'per pound',
+    category: 'Vegetables',
+    tags: ['organic', 'fresh', 'healthy'],
+    color: 'Green',
+    stockAvailability: true,
+  },
 ]

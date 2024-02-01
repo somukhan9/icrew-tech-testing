@@ -6,16 +6,14 @@ import BreadCrumb from '@/components/BreadCrumb'
 
 const filterProducts = async (filterOptions) => {
   'use server'
-  console.log(filterOptions)
   // Make get request
   const resp = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/products?limit=${filterOptions.limit}&page=${filterOptions.page}&sortBy=${filterOptions.sortBy}&sortOrder=${filterOptions.sortOrder}`,
     {
-      cache: 'force-cache',
+      cache: 'no-store',
     },
   )
   const data = await resp.json()
-  // console.log(data)
   return {
     totalPage: Math.ceil(data.meta.total / data.meta.limit),
     products: data.data,
@@ -45,12 +43,10 @@ export default async function ProductList({ searchParams }) {
     sortBy: searchParams.sortBy || '',
     sortOrder: searchParams.sortOrder || '',
     page: parseInt(searchParams.page) || 1,
-    limit: parseInt(searchParams.limit) || 1,
+    limit: parseInt(searchParams.limit) || 4,
   })
 
   const categories = await fetchAllCategories()
-
-  // console.log(categories)
 
   // this products variable should passed to the Product component as props
 

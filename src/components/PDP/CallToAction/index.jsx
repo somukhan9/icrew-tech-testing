@@ -2,10 +2,14 @@
 
 import { useState } from 'react'
 
+import { useCartStore } from '@/store/cart'
+
 import styles from './index.module.css'
 
 export default function CallToAction({ product }) {
   const [itemCount, setItemCount] = useState(1)
+
+  const { products, addProducts } = useCartStore((state) => state)
 
   const increaseByOne = () => {
     setItemCount((prev) => prev + 1)
@@ -39,7 +43,19 @@ export default function CallToAction({ product }) {
 
         <p>{product.unit}</p>
       </div>
-      <button className={styles.addToCartBtn}>
+      <button
+        className={styles.addToCartBtn}
+        onClick={() => {
+          const productFoundAlready = products.find((p) => p.id === product.id)
+
+          if (productFoundAlready) {
+            alert('This product already in cart!')
+            return
+          }
+
+          addProducts(product, itemCount)
+        }}
+      >
         <p>Add to Cart</p> <i className="bx bx-shopping-bag text-xl"></i>
       </button>
     </div>

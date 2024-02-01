@@ -47,9 +47,6 @@ export default function BreadCrumb() {
           {urls.map((item, index) => {
             urlQueue.push(item)
             url = origin + '/' + urlQueue.join('/')
-            // console.log(item)
-            // console.log(urlQueue)
-            // console.log(url)
 
             return (
               <div key={index} className="flex items-center gap-2 text-lg">

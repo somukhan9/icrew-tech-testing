@@ -70,8 +70,6 @@ export default function Pagination({ totalPage, products }) {
     handleInvalidPageRedirection()
   }, [router, currentPage, totalPage])
 
-  console.log(currentPage, 'hello')
-
   if (!isClient) {
     return (
       <div className="flex h-24 w-full items-center justify-center">

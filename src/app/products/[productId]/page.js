@@ -47,17 +47,11 @@ const getProductById = async (productId) => {
   )
   const { data } = await resp.json()
 
-  // console.log(resp)
-
   return data
 }
 
 export default async function PDP({ params: { productId } }) {
-  // console.log(productId)
-
   const product = await getProductById(productId)
-
-  // console.log(product)
 
   return (
     <>
