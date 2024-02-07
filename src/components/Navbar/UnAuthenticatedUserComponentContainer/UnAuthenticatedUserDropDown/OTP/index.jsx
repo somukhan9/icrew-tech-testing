@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
-function OTP({ otpLength = 0, handleOTPSubmit = () => {} }) {
+function OTP({
+  isSignIn,
+  setIsSignIn,
+  closeOTP,
+  otpLength = 0,
+  handleOTPSubmit = () => {},
+}) {
   const [otp, setOtp] = useState(new Array(otpLength).fill(''))
   const otpInputRefs = useRef([])
 
@@ -68,6 +74,25 @@ function OTP({ otpLength = 0, handleOTPSubmit = () => {} }) {
             className="h-10 w-10 rounded-md border border-indigo-500 text-center outline-none ring-offset-indigo-600 focus:ring-2"
           />
         ))}
+      </div>
+      <div className="mt-4 flex flex-col items-center justify-center gap-2">
+        {isSignIn ? (
+          <button
+            onClick={() => {
+              closeOTP()
+            }}
+          >
+            Try Again
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              // closeOTP()
+            }}
+          >
+            Generate OTP Again
+          </button>
+        )}
       </div>
     </div>
   )

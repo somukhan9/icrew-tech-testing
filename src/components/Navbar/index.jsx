@@ -106,11 +106,11 @@ export default function Navbar() {
           <div className="relative">
             <button
               ref={languageSelectionDropDownOpenBtnRef}
-              onClick={toggleLanguageSelectionDropDown}
-              className={`${styles.link} flex items-center justify-center`}
+              // onClick={toggleLanguageSelectionDropDown}
+              className={`${styles.link} flex cursor-text items-center justify-center`}
             >
               <p className="inline-block h-full w-full text-sm">Eng</p>
-              <i className="bx bx-chevron-down inline-block"></i>
+              {/* <i className="bx bx-chevron-down inline-block"></i> */}
             </button>
 
             {/* Language Selection Options Dropdown  */}

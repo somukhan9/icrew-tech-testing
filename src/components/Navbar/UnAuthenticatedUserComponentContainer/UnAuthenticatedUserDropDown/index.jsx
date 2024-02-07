@@ -5,7 +5,7 @@ import AuthenticationForm from './AuthenticationForm'
 import { useEffect, useRef, useState } from 'react'
 
 import styles from './index.module.css'
-import OTP from './OTP'
+import { useAuthStore } from '@/store/auth'
 
 export default function UnAuthenticatedUserDropDown({
   isSignIn,
@@ -14,8 +14,9 @@ export default function UnAuthenticatedUserDropDown({
   closeUnAuthenticatedUserDropDown,
   openUnAuthenticatedDropDownBtnRef,
 }) {
-  const [showOtp, setShowOtp] = useState(false)
   const openUnAuthenticatedDropDownRef = useRef()
+
+  const showOTP = useAuthStore((state) => state.showOTP)
 
   useEffect(() => {
     const handleUnAuthenticatedDropDown = (event) => {
@@ -52,7 +53,7 @@ export default function UnAuthenticatedUserDropDown({
       >
         <span>&times;</span>
       </button>
-      {!showOtp && (
+      {!showOTP && (
         <>
           <div className="mx-auto mb-4 flex w-full max-w-xs items-center justify-around">
             <button
@@ -84,15 +85,8 @@ export default function UnAuthenticatedUserDropDown({
           <div className="h-[2px] w-full bg-slate-400"></div>
         </>
       )}
-      {/* <h3>{isSignIn ? 'Sign In'}</h3> */}
-      <AuthenticationForm
-        isSignIn={isSignIn}
-        setIsSignIn={setIsSignIn}
-        showOtp={showOtp}
-        setShowOtp={setShowOtp}
-      />
 
-      {/*  <OTP setShowOtp={setShowOtp} otpLength={4} handleOTPSubmit={handleOTPSubmit} /> */}
+      <AuthenticationForm isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
     </div>
   )
 }

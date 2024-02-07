@@ -43,15 +43,17 @@ export default function ProductDescriptionContainer({ productTags, product }) {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
             <p
-              className={`text-sm text-[#B3B3B3] sm:text-xl ${classnames({
-                'line-through': product.discount > 0,
+              className={`text-sm  sm:text-xl ${classnames({
+                'text-[#B3B3B3] line-through': product.discount > 0,
               })}`}
             >
               ৳{product.price}
             </p>
-            <p className="text-base font-medium text-[#2C742F] sm:text-2xl">
-              ৳{product.afterDiscountPrice}
-            </p>
+            {product.discount > 0 && (
+              <p className="text-base font-medium text-[#2C742F] sm:text-2xl">
+                ৳{product.afterDiscountPrice}
+              </p>
+            )}
           </div>
           <div className="rounded-full bg-[#EA4B481A] px-4 py-2">
             <p className="text-xs font-medium text-[#EA4B48]">64% Off</p>

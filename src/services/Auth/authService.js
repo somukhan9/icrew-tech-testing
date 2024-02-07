@@ -6,6 +6,18 @@ export const useAuthService = () => {
   const authState = useAuthStore()
   const router = useRouter()
 
+  const setIsSignIn = (payload) => {
+    authState.setIsSignIn(payload)
+  }
+
+  const openOTP = () => {
+    authState.openOTP()
+  }
+
+  const closeOTP = () => {
+    authState.closeOTP()
+  }
+
   const signIn = (payload) => {
     authState.signIn(payload)
   }
@@ -15,5 +27,5 @@ export const useAuthService = () => {
     router.replace('/')
   }
 
-  return { signIn, signOut }
+  return { setIsSignIn, openOTP, closeOTP, signIn, signOut }
 }

@@ -5,6 +5,9 @@ import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+
+import classnames from 'classnames'
+
 import { dummyProducts as data } from '@/dummyProducts'
 import Spinner from './Spinner'
 
@@ -100,10 +103,18 @@ export default function Pagination({ totalPage, products }) {
               </p>
               <div className="mb-1 mt-1 flex w-[95%] items-center justify-between">
                 <div className="flex w-[80%] justify-start sm:w-[60%]">
-                  <p className="ml-1 text-base font-semibold sm:ml-5">
-                    ৳ {p.price}
-                  </p>
-                  <p className="ml-2 text-base font-semibold text-gray-500 line-through sm:ml-3">
+                  {p.discount > 0 && (
+                    <p className="ml-1 text-base font-semibold sm:ml-5">
+                      ৳ {p.afterDiscountPrice}
+                    </p>
+                  )}
+                  <p
+                    className={`ml-2 text-base font-semibold sm:ml-3 ${classnames(
+                      {
+                        'text-gray-500 line-through ': p.discount > 0,
+                      },
+                    )}`}
+                  >
                     ৳ {p.price}
                   </p>
                 </div>

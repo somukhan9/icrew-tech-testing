@@ -3,11 +3,16 @@
 import { useRef, useState } from 'react'
 import UnAuthenticatedUserDropDown from './UnAuthenticatedUserDropDown'
 import styles from './index.module.css'
+import { useAuthStore } from '@/store/auth'
+import { useAuthService } from '@/services/Auth/authService'
 
 export default function UnAuthenticatedUserComponentContainer() {
   const openUnAuthenticatedDropDownBtnRef = useRef()
 
-  const [isSignIn, setIsSignIn] = useState(true)
+  const { isSignIn } = useAuthStore((state) => state)
+
+  const { setIsSignIn } = useAuthService()
+
   const [
     isOpenUnAuthenticatedUserDropDown,
     setIsOpenUnAuthenticatedUserDropDown,
