@@ -105,21 +105,6 @@ export default function Filters({ categories }) {
       <div className="flex flex-wrap gap-4">
         <div className="relative">
           <button
-            onClick={() => setSortByToggle(!sortByToggle)}
-            className="mr-5 flex w-[150px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
-          >
-            <p>Sort by: {sortByParam}</p>
-            <i className="bx bx-down-arrow-alt"></i>
-          </button>
-          <DropDown
-            listData={sortBy}
-            toggle={sortByToggle}
-            width={150}
-            queryType="sortBy"
-          />
-        </div>
-        <div className="relative">
-          <button
             onClick={() => setSortOrderToggle((prev) => !prev)}
             className="mr-5 flex w-[180px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
           >
@@ -133,6 +118,23 @@ export default function Filters({ categories }) {
             queryType="sortOrder"
           />
         </div>
+
+        <div className="relative">
+          <button
+            onClick={() => setSortByToggle(!sortByToggle)}
+            className="mr-5 flex w-[150px] items-center justify-between rounded-md border border-gray-300 p-2 text-gray-600"
+          >
+            <p>Sort by: {sortByParam}</p>
+            <i className="bx bx-down-arrow-alt"></i>
+          </button>
+          <DropDown
+            listData={sortBy}
+            toggle={sortByToggle}
+            width={150}
+            queryType="sortBy"
+          />
+        </div>
+
         <div className="relative">
           <button
             onClick={() => setShowedProductsToggle(!showedProductsToggle)}

@@ -8,7 +8,7 @@ const filterProducts = async (filterOptions) => {
   'use server'
   // Make get request
   const resp = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/products?limit=${filterOptions.limit}&page=${filterOptions.page}&sortBy=${filterOptions.sortBy}&sortOrder=${filterOptions.sortOrder}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/products?limit=${filterOptions.limit}&page=${filterOptions.page}&sortBy=${filterOptions.sortBy}&sortOrder=${filterOptions.sortOrder}&category=${filterOptions.category}`,
     {
       cache: 'no-store',
     },
@@ -40,8 +40,8 @@ export default async function ProductList({ searchParams }) {
     category: searchParams.category || '',
     price: searchParams.price || '',
     rating: searchParams.rating || '',
-    sortBy: searchParams.sortBy || '',
-    sortOrder: searchParams.sortOrder || '',
+    sortBy: searchParams.sortBy || 'title',
+    sortOrder: searchParams.sortOrder || 'asc',
     page: parseInt(searchParams.page) || 1,
     limit: parseInt(searchParams.limit) || 4,
   })

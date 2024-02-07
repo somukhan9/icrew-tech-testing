@@ -11,12 +11,20 @@ import { useEffect, useState } from 'react'
 import { useZoneStore } from '@/store/zone'
 import { useAuthService } from '@/services/Auth/authService'
 import Spinner from '@/components/Spinner'
+import OTP from '../OTP'
 
-export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
+export default function AuthenticationForm({
+  isSignIn,
+  setIsSignIn,
+  showOtp,
+  setShowOtp,
+}) {
   const [isClient, setIsClient] = useState(false)
-  const [isOtpGenerating, setIsOtpGenerating] = useState(false)
-  const [usernameOrEmail, setUsernameOrEmail] = useState('')
-  const [password, setPassword] = useState('')
+  // const [isOTPSubmissionSuccessful, setIsOTPSubmissionSuccessful] =
+  //   useState(false)
+
+  const [accessToken, setAccessToken] = useState('')
+
   const zones = useZoneStore((state) => state.zones)
   const collectZones = useZoneStore((state) => state.collectZones)
   // const signIn = useAuthStore((state) => state.signIn)
@@ -31,22 +39,25 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
     resolver: isSignIn ? zodResolver(SignInSchema) : zodResolver(SignUpSchema),
   })
 
-  const generateOTP = async () => {
-    setIsOtpGenerating(true)
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      console.log('generate OTP')
-    } catch (error) {
-    } finally {
-      setIsOtpGenerating(false)
-      console.log(usernameOrEmail, password)
+  const handleOTPSubmit = (otp) => {
+    console.log(`${otp} submitted OTP!`)
+
+    // setShowOtp(false)
+
+    // If OTP is verified then log in the user
+    if (isSignIn) {
+      signIn(accessToken)
+      toast.success('Successfully Logged In!')
+    } else {
+      setIsSignIn(true)
+      toast.success('Registration Successful!')
     }
+    setShowOtp(false)
   }
 
   const onSubmit = async (formData) => {
     try {
       if (isSignIn) {
-        console.log(formData)
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`,
           {
@@ -59,18 +70,15 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
         )
 
         const data = await response.json()
-        console.log(data)
 
         if (data.success) {
-          toast.success(data.message)
-        } else {
-          toast.error(data.message)
-        }
-
-        if (response.ok) {
           const { accessToken } = data.data
-          signIn(accessToken)
+          setAccessToken(accessToken)
+
           reset()
+          setShowOtp(true)
+        } else {
+          toast.error('Invalid Credentials!')
         }
       } else {
         const { password, password2, ...rest } = formData
@@ -79,8 +87,6 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
           user: { password },
           buyer: { ...rest },
         }
-
-        // console.log(body)
 
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/users/create-buyer`,
@@ -94,21 +100,21 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
         )
 
         const data = await response.json()
-        // console.log(data)
 
         if (data.success) {
-          toast.success(data.message)
-        } else {
-          toast.error(data.message)
-        }
-
-        if (response.ok) {
-          setIsSignIn(true)
           reset()
+          setShowOtp(true)
+          toast.success('An OTP has been sent to your phone number!')
+        } else {
+          const errorMessage = data.errorMessages
+            .map((error) => [error.message])
+            .join(', ')
+          toast.error(errorMessage)
         }
       }
     } catch (error) {
-      console.error(error)
+      // console.error(error)
+      toast.error('Internal Server Error! Please Try Again.')
     }
   }
 
@@ -129,6 +135,10 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  if (showOtp) {
+    return <OTP otpLength={4} handleOTPSubmit={handleOTPSubmit} />
+  }
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -145,7 +155,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
                 id="usernameOrEmail"
                 {...register('usernameOrEmail')}
                 className={styles.formControl}
-                onChange={(e) => setUsernameOrEmail(e.target.value)}
+                // onChange={(e) => setUsernameOrEmail(e.target.value)}
                 placeholder="Enter username or email"
               />
               {errors['usernameOrEmail'] && (
@@ -167,7 +177,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
                 id="username"
                 {...register('username')}
                 className={styles.formControl}
-                onChange={(e) => setUsernameOrEmail(e.target.value)}
+                // onChange={(e) => setUsernameOrEmail(e.target.value)}
                 placeholder="Enter username"
               />
               {errors['username'] && (
@@ -187,7 +197,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
                 id="email"
                 {...register('email')}
                 className={styles.formControl}
-                onChange={(e) => setUsernameOrEmail(e.target.value)}
+                // onChange={(e) => setUsernameOrEmail(e.target.value)}
                 placeholder="Enter email address"
               />
               {errors['email'] && (
@@ -209,7 +219,7 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
             id="password"
             {...register('password')}
             className={styles.formControl}
-            onChange={(e) => setPassword(e.target.value)}
+            // onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter password"
           />
           {errors['password'] && (
@@ -300,32 +310,6 @@ export default function AuthenticationForm({ isSignIn, setIsSignIn }) {
           </div>
         </>
       )}
-
-      {/* OTP */}
-      <div className={styles.formGroup}>
-        <div></div>
-        <div className={styles.generateOTPSectionContainer}>
-          <button
-            onClick={generateOTP}
-            disabled={isOtpGenerating}
-            className={styles.generateOTPBtn}
-          >
-            Generate OTP
-          </button>
-          <div className="flex flex-col">
-            <input
-              type="number"
-              id="otp"
-              {...register('otp')}
-              placeholder="Enter OTP Here"
-              className={styles.formControl}
-            />
-            {errors['otp'] && (
-              <p className="text-xs text-red-700">{errors['otp'].message}</p>
-            )}
-          </div>
-        </div>
-      </div>
 
       {/* Submit Button */}
       <button

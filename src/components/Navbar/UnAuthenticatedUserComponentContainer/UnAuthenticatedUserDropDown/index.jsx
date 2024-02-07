@@ -2,9 +2,10 @@
 
 import classnames from 'classnames'
 import AuthenticationForm from './AuthenticationForm'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import styles from './index.module.css'
+import OTP from './OTP'
 
 export default function UnAuthenticatedUserDropDown({
   isSignIn,
@@ -13,6 +14,7 @@ export default function UnAuthenticatedUserDropDown({
   closeUnAuthenticatedUserDropDown,
   openUnAuthenticatedDropDownBtnRef,
 }) {
+  const [showOtp, setShowOtp] = useState(false)
   const openUnAuthenticatedDropDownRef = useRef()
 
   useEffect(() => {
@@ -50,36 +52,47 @@ export default function UnAuthenticatedUserDropDown({
       >
         <span>&times;</span>
       </button>
-      <div className="mx-auto mb-4 flex w-full max-w-xs items-center justify-around">
-        <button
-          onClick={() => {
-            setIsSignIn(true)
-          }}
-          className={classnames({
-            'hover:text-slate-900': true,
-            'font-semibold text-slate-900': isSignIn,
-            'text-slate-700': !isSignIn,
-          })}
-        >
-          Sign In
-        </button>
-        <div className="h-6 w-[2px] bg-slate-400" />
-        <button
-          onClick={() => {
-            setIsSignIn(false)
-          }}
-          className={classnames({
-            'hover:text-slate-900': true,
-            'font-semibold text-slate-900': !isSignIn,
-            'text-slate-700': isSignIn,
-          })}
-        >
-          Sign Up
-        </button>
-      </div>
-      <div className="h-[2px] w-full bg-slate-400"></div>
+      {!showOtp && (
+        <>
+          <div className="mx-auto mb-4 flex w-full max-w-xs items-center justify-around">
+            <button
+              onClick={() => {
+                setIsSignIn(true)
+              }}
+              className={classnames({
+                'hover:text-slate-900': true,
+                'font-semibold text-slate-900': isSignIn,
+                'text-slate-700': !isSignIn,
+              })}
+            >
+              Sign In
+            </button>
+            <div className="h-6 w-[2px] bg-slate-400" />
+            <button
+              onClick={() => {
+                setIsSignIn(false)
+              }}
+              className={classnames({
+                'hover:text-slate-900': true,
+                'font-semibold text-slate-900': !isSignIn,
+                'text-slate-700': isSignIn,
+              })}
+            >
+              Sign Up
+            </button>
+          </div>
+          <div className="h-[2px] w-full bg-slate-400"></div>
+        </>
+      )}
       {/* <h3>{isSignIn ? 'Sign In'}</h3> */}
-      <AuthenticationForm isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
+      <AuthenticationForm
+        isSignIn={isSignIn}
+        setIsSignIn={setIsSignIn}
+        showOtp={showOtp}
+        setShowOtp={setShowOtp}
+      />
+
+      {/*  <OTP setShowOtp={setShowOtp} otpLength={4} handleOTPSubmit={handleOTPSubmit} /> */}
     </div>
   )
 }

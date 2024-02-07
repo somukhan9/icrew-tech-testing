@@ -12,8 +12,6 @@ export const SignUpSchema = z
       .string()
       .min(11, 'Phone number must be of 11 digits')
       .max(11, 'Phone number must be of 11 digits'),
-
-    otp: z.string().min(3, 'OTP can not be empty'),
   })
   .refine((data) => data.password === data.password2, {
     message: 'Passwords did not match',
@@ -23,5 +21,4 @@ export const SignUpSchema = z
 export const SignInSchema = z.object({
   usernameOrEmail: z.string().min(1, 'Please enter username or email'),
   password: z.string().min(1, 'Please enter password'),
-  otp: z.string().min(3, 'OTP can not be empty'),
 })

@@ -113,7 +113,7 @@ export default function Navbar() {
               <i className="bx bx-chevron-down inline-block"></i>
             </button>
 
-            {/* Language Selection Options Dropdown */}
+            {/* Language Selection Options Dropdown  */}
             <LanguageSelectionDropDown
               languageSelectionDropDownOpenBtnRef={
                 languageSelectionDropDownOpenBtnRef
