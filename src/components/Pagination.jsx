@@ -59,7 +59,7 @@ export default function Pagination({ totalPage, products }) {
       if (currentPage <= 0) {
         urlSearch.set('page', 1)
         router.replace(`?${urlSearch.toString()}`, { scroll: false })
-      } else if (currentPage > totalPage) {
+      } else if (totalPage !== 0 && currentPage > totalPage) {
         urlSearch.set('page', totalPage)
         router.replace(`?${urlSearch.toString()}`, { scroll: false })
       } else if (currentPage === NaN) {
@@ -123,6 +123,11 @@ export default function Pagination({ totalPage, products }) {
             </Link>
           </div>
         ))}
+        {/* {products.length === 0 && (
+          <h2 className="w-full text-center text-xl font-bold">
+            No Product Found!
+          </h2>
+        )} */}
       </div>
 
       {totalPage > 1 && (

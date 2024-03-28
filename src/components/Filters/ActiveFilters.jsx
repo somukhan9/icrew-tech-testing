@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function ActiveFilters() {
+export default function ActiveFilters({ productCount }) {
   const searchParams = useSearchParams()
   const category = searchParams.get('category') || ''
   const price = searchParams.get('price') || ''
@@ -108,7 +108,7 @@ export default function ActiveFilters() {
           ''
         )}
       </div>
-      <div>2,547 Results found</div>
+      <div>{productCount} Results found</div>
     </div>
   )
 }

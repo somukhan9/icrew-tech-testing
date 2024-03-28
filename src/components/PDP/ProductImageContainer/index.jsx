@@ -38,7 +38,7 @@ export default function ProductImageContainer({ productImages }) {
         </button>
         {productImages.map((item, index) => (
           <div
-            key={item.id}
+            key={index}
             onClick={() => handleSelectImage(index)}
             className={`relative mx-4 my-0 h-10 w-10 cursor-pointer overflow-hidden rounded-md sm:h-14 sm:w-14 lg:mx-0 lg:my-4 ${classnames(
               {

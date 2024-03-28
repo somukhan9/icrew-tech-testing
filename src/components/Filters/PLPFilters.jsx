@@ -22,14 +22,30 @@ export default function Filters({ categories }) {
 
   const categoryForFilters = categories.map((category) => ({
     key: category.title,
-    value: category.slug,
+    value: category.id,
   }))
 
-  const prices = [
-    { key: 'Default', value: '' },
-    { key: 'Low to High', value: 'low-to-high' },
-    { key: 'High to Low', value: 'high-to-low' },
-  ]
+  // const prices = [
+  //   { key: 'Default', value: '' },
+  //   {
+  //     key: (
+  //       <input
+  //         type="number"
+  //         name="minPrice"
+  //         id="minPrice"
+  //         min={1}
+  //         className="h-8 w-28 rounded-md outline-none ring-offset-indigo-500 focus:ring-2"
+  //         placeholder="Min Price"
+  //       />
+  //     ),
+  //     value: '',
+  //   },
+  //   {
+  //     key: <input type="number" name="minPrice" id="maxPrice" />,
+  //     value: '',
+  //   },
+  // ]
+
   const ratings = [
     { key: '5 out of 5', value: 5 },
     { key: '4+', value: 4 },
@@ -80,7 +96,7 @@ export default function Filters({ categories }) {
             <i className="bx bx-down-arrow-alt"></i>
           </button>
           <DropDown
-            listData={prices}
+            listData={[]}
             toggle={priceToggle}
             width={150}
             queryType="price"
